@@ -124,6 +124,8 @@ export NVM_DIR="$HOME/.nvm"
 alias microservices="ssh -i ~/.ssh/intevi-microservices.pem ubuntu@ec2-18-200-143-97.eu-west-1.compute.amazonaws.com"
 alias influx="ssh -i ~/.ssh/staging-intevicloud.pem ubuntu@ec2-54-170-116-155.eu-west-1.compute.amazonaws.com"
 alias polscape='ssh -i ~/.ssh/staging-intevicloud.pem ubuntu@ec2-54-246-30-125.eu-west-1.compute.amazonaws.com'
+alias pointgrab='ssh -i ~/.ssh/staging-intevicloud.pem ubuntu@ec2-34-254-198-32.eu-west-1.compute.amazonaws.com'
+
 alias ll='ls -alF'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
