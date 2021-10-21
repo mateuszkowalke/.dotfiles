@@ -18,6 +18,7 @@ Plug 'windwp/nvim-autopairs'
 Plug 'terrortylor/nvim-comment'
 Plug 'phaazon/hop.nvim'
 Plug 'SirVer/ultisnips'
+Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 
 " Styling stuff
 Plug 'vim-airline/vim-airline'
