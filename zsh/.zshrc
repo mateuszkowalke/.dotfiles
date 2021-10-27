@@ -125,6 +125,7 @@ alias microservices="ssh -i ~/.ssh/intevi-microservices.pem ubuntu@ec2-18-200-14
 alias influx="ssh -i ~/.ssh/staging-intevicloud.pem ubuntu@ec2-54-170-116-155.eu-west-1.compute.amazonaws.com"
 alias polscape='ssh -i ~/.ssh/staging-intevicloud.pem ubuntu@ec2-54-246-30-125.eu-west-1.compute.amazonaws.com'
 alias pointgrab='ssh -i ~/.ssh/staging-intevicloud.pem ubuntu@ec2-34-254-198-32.eu-west-1.compute.amazonaws.com'
+alias develop-itb='ssh -i ~/.ssh/staging-intevicloud.pem ubuntu@ec2-54-74-47-196.eu-west-1.compute.amazonaws.com'
 
 alias ll='ls -alF'
 
