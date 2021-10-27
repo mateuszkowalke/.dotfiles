@@ -25,6 +25,9 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'EdenEast/nightfox.nvim'
 
+" Markdown
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
+
 " Git stuff
 Plug 'https://github.com/tpope/vim-fugitive'
 Plug 'lewis6991/gitsigns.nvim'
