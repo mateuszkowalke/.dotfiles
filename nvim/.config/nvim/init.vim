@@ -13,7 +13,8 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend upda
 Plug 'puremourning/vimspector'
 
 " Stuff around editing
-Plug 'nvim-lua/completion-nvim'
+Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
+Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 Plug 'windwp/nvim-autopairs'
 Plug 'terrortylor/nvim-comment'
 Plug 'phaazon/hop.nvim'
@@ -23,7 +24,7 @@ Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 " Styling stuff
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'EdenEast/nightfox.nvim'
+Plug 'bluz71/vim-moonfly-colors'
 
 " Markdown
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
@@ -130,7 +131,7 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'pyright', 'bashls', 'gopls', 'tsserver', 'prismals', 'ccls', 'cssls', 'html', 'jsonls' }
+local servers = { 'pyright', 'bashls', 'gopls', 'rust_analyzer', 'tsserver', 'prismals', 'ccls', 'cssls', 'html', 'jsonls' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
@@ -143,24 +144,19 @@ EOF
 
 
 """""""""""""""""""""""""""""""""""""""""""
-"""" completion-nvim config            """"
+"""" coq-nvim config                   """"
 """""""""""""""""""""""""""""""""""""""""""
 
-" Use completion-nvim in every buffer
-autocmd BufEnter * lua require'completion'.on_attach()
-
-" Use <Tab> and <S-Tab> to navigate through popup menu
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" Autostart
+lua << EOF
+vim.g.coq_settings = { ["auto_start"] = true }
+EOF
 
 " Set completeopt to have a better completion experience
 set completeopt=menuone,noinsert,noselect
 
 " Avoid showing message extra message when using completion
 set shortmess+=c
-
-" possible value: 'UltiSnips', 'Neosnippet', 'vim-vsnip', 'snippets.nvim'
-let g:completion_enable_snippet = 'UltiSnips'
 
 """""""""""""""""""""""""""""""""""""""""""
 """" TreeSitter config                 """"
@@ -206,7 +202,7 @@ let g:UltiSnipsEditSplit="vertical"
 """" Colorscheme config                """"
 """""""""""""""""""""""""""""""""""""""""""
 
-colorscheme nordfox
+colorscheme moonfly
 
 """""""""""""""""""""""""""""""""""""""""""
 """" Gitsigns config                   """"
