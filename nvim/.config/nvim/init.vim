@@ -75,6 +75,7 @@ set scrolloff=8
 set colorcolumn=100
 set cot=menuone,noinsert,noselect shm+=c
 let mapleader=" "
+set ft=nasm " syntax highlighting for nasm assembly
 set inccommand=nosplit                        " show substitutions incrementally
 au! BufNewFile,BufRead *.svelte set ft=html " needed for svelte ls to work
 
@@ -134,7 +135,7 @@ end
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'yamlls', 'pyright', 'prismals', 'bashls', 'gopls', 'rust_analyzer', 'tsserver', 'ccls', 'cssls', 'html', 'jsonls' }
+local servers = { 'svelte', 'tailwindcss', 'yamlls', 'pyright', 'prismals', 'bashls', 'gopls', 'rust_analyzer', 'tsserver', 'ccls', 'cssls', 'html', 'jsonls' }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup {
     on_attach = on_attach,
