@@ -15,6 +15,7 @@ Plug 'puremourning/vimspector'
 " Stuff around editing
 Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
+Plug 'ray-x/lsp_signature.nvim'
 Plug 'windwp/nvim-autopairs'
 Plug 'terrortylor/nvim-comment'
 Plug 'phaazon/hop.nvim'
@@ -146,6 +147,15 @@ for _, lsp in ipairs(servers) do
 end
 EOF
 
+"""""""""""""""""""""""""""""""""""""""""""
+"""" lsp_signature config              """"
+"""""""""""""""""""""""""""""""""""""""""""
+
+lua << EOF
+
+require "lsp_signature".setup()
+
+EOF
 
 """""""""""""""""""""""""""""""""""""""""""
 """" coq-nvim config                   """"
