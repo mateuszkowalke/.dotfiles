@@ -156,6 +156,9 @@ EOF
 
 lua << EOF
 
+local cfg = {
+
+    }
 require "lsp_signature".setup()
 
 EOF
@@ -168,6 +171,7 @@ EOF
 " Keymap is set to work with autopairs
 lua << EOF
 vim.g.coq_settings = { ["auto_start"] = true, keymap = { recommended = false } }
+vim.g.coq_settings["clients"] = { ["tabnine"] = { ["enabled"] = true } }
 EOF
 
 " Set completeopt to have a better completion experience
