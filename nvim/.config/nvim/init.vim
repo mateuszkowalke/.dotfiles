@@ -10,6 +10,7 @@ Plug 'puremourning/vimspector'
 " Stuff around editing
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'pantharshit00/vim-prisma'
+Plug 'leafOfTree/vim-svelte-plugin'
 Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-commentary'
 
@@ -62,7 +63,6 @@ set cot=menuone,noinsert,noselect shm+=c
 let mapleader=" "
 set ft=nasm " syntax highlighting for nasm assembly
 set inccommand=nosplit                        " show substitutions incrementally
-au! BufNewFile,BufRead *.svelte set ft=html " needed for svelte ls to work
 
 nnoremap Y y$ " make capital Y behave like vim
 
