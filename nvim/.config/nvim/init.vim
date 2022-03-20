@@ -17,7 +17,7 @@ Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
 Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
 Plug 'ray-x/lsp_signature.nvim'
 Plug 'windwp/nvim-autopairs'
-Plug 'terrortylor/nvim-comment'
+Plug 'tpope/vim-commentary'
 Plug 'phaazon/hop.nvim'
 Plug 'SirVer/ultisnips'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
@@ -25,7 +25,7 @@ Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 " Styling stuff
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'bluz71/vim-moonfly-colors'
+Plug 'mhartington/oceanic-next'
 
 " Markdown
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
@@ -98,6 +98,26 @@ require('telescope').setup()
 EOF
 
 """""""""""""""""""""""""""""""""""""""""""
+"""" coq-nvim config                   """"
+"""""""""""""""""""""""""""""""""""""""""""
+
+" Autostart
+" Keymap is set to work with autopairs
+lua << EOF
+vim.g.coq_settings = {
+    ["auto_start"] = true,
+    keymap = { recommended = false },
+    clients = { tabnine = { enabled = true } }
+    }
+EOF
+
+" Set completeopt to have a better completion experience
+set completeopt=menuone,noinsert,noselect
+
+" Avoid showing message extra message when using completion
+set shortmess+=c
+
+"""""""""""""""""""""""""""""""""""""""""""
 """" LSP Client config                 """"
 """""""""""""""""""""""""""""""""""""""""""
 
@@ -141,12 +161,12 @@ end
 -- map buffer local keybindings when the language server attaches
 local servers = { 'svelte', 'yamlls', 'pyright', 'prismals', 'bashls', 'gopls', 'tsserver', 'ccls', 'cssls', 'html', 'jsonls' }
 for _, lsp in ipairs(servers) do
-  nvim_lsp[lsp].setup {
+  nvim_lsp[lsp].setup(require('coq').lsp_ensure_capabilities( {
     on_attach = on_attach,
     flags = {
       debounce_text_changes = 150,
     }
-  }
+  }))
 end
 nvim_lsp['rust_analyzer'].setup {
     on_attach = on_attach,
@@ -162,6 +182,7 @@ nvim_lsp['rust_analyzer'].setup {
     }
 }
 EOF
+let g:coq_settings.clients.tabnine.enabled = v:true
 
 """""""""""""""""""""""""""""""""""""""""""
 """" lsp_signature config              """"
@@ -175,23 +196,6 @@ local cfg = {
 require "lsp_signature".setup()
 
 EOF
-
-"""""""""""""""""""""""""""""""""""""""""""
-"""" coq-nvim config                   """"
-"""""""""""""""""""""""""""""""""""""""""""
-
-" Autostart
-" Keymap is set to work with autopairs
-lua << EOF
-vim.g.coq_settings = { ["auto_start"] = true, keymap = { recommended = false } }
-vim.g.coq_settings["clients"] = { ["tabnine"] = { ["enabled"] = true } }
-EOF
-
-" Set completeopt to have a better completion experience
-set completeopt=menuone,noinsert,noselect
-
-" Avoid showing message extra message when using completion
-set shortmess+=c
 
 """""""""""""""""""""""""""""""""""""""""""
 """" TreeSitter config                 """"
@@ -237,7 +241,7 @@ let g:UltiSnipsEditSplit="vertical"
 """" Colorscheme config                """"
 """""""""""""""""""""""""""""""""""""""""""
 
-colorscheme moonfly
+colorscheme OceanicNext
 
 """""""""""""""""""""""""""""""""""""""""""
 """" Gitsigns config                   """"
@@ -375,28 +379,6 @@ autocmd FileType go nmap <leader>r  <Plug>(go-run)
 autocmd FileType go nmap <leader>t  <Plug>(go-test)
 
 """""""""""""""""""""""""""""""""""""""""""
-"""" nvim-comment config               """"
-"""""""""""""""""""""""""""""""""""""""""""
-
-lua << EOF
-opts = {
-  -- Linters prefer comment and line to have a space in between markers
-  marker_padding = true,
-  -- should comment out empty or whitespace only lines
-  comment_empty = true,
-  -- Should key mappings be created
-  create_mappings = true,
-  -- Normal mode mapping left hand side
-  line_mapping = "<leader>cc",
-  -- Visual/Operator mapping left hand side
-  operator_mapping = "<leader>c",
-  -- Hook function to call before commenting takes place
-  hook = nil
-}
-require('nvim_comment').setup(opts)
-EOF
-
-"""""""""""""""""""""""""""""""""""""""""""
 """" Hop config                        """"
 """""""""""""""""""""""""""""""""""""""""""
 
@@ -404,6 +386,7 @@ nmap <leader>h :HopWord<CR>
 lua << EOF
 require'hop'.setup()
 EOF
+Plug 'tpope/vim-commentary'
 
 """""""""""""""""""""""""""""""""""""""""""
 """" Vimspector config                 """"
