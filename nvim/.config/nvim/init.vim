@@ -10,16 +10,16 @@ Plug 'puremourning/vimspector'
 " Stuff around editing
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'pantharshit00/vim-prisma'
-Plug 'leafOfTree/vim-svelte-plugin'
 Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-commentary'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 " Styling stuff
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " Colorscheme
-Plug 'mhartington/oceanic-next'
+Plug 'morhetz/gruvbox'
 
 " Git stuff
 Plug 'https://github.com/tpope/vim-fugitive'
@@ -79,6 +79,31 @@ require('telescope').setup()
 EOF
 
 """""""""""""""""""""""""""""""""""""""""""
+"""" Treesitter config                 """"
+"""""""""""""""""""""""""""""""""""""""""""
+
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+  -- One of "all", "maintained" (parsers with maintainers), or a list of languages
+  ensure_installed = "maintained",
+
+  -- Install languages synchronously (only applied to `ensure_installed`)
+  sync_install = false,
+
+  highlight = {
+    -- `false` will disable the whole extension
+    enable = true,
+
+    -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
+    -- Set this to `true` if you depend on 'syntax' being enabled (like for indentation).
+    -- Using this option may slow down your editor, and you may see some duplicate highlights.
+    -- Instead of true it can also be a list of languages
+    additional_vim_regex_highlighting = false,
+  },
+}
+EOF
+
+"""""""""""""""""""""""""""""""""""""""""""
 """" Commentary config                 """"
 """""""""""""""""""""""""""""""""""""""""""
 
@@ -103,7 +128,7 @@ let g:UltiSnipsEditSplit="vertical"
 """""""""""""""""""""""""""""""""""""""""""
 
 syntax enable
-colorscheme OceanicNext
+colorscheme gruvbox
 
 """""""""""""""""""""""""""""""""""""""""""
 """" Gitsigns config                   """"
@@ -161,15 +186,13 @@ EOF
 
 let g:nvim_tree_width = 40 "30 by default, can be width_in_columns or 'width_in_percent%'
 let g:nvim_tree_auto_ignore_ft = [ 'startify', 'dashboard' ] "empty by default, don't auto open tree on specific filetypes.
-let g:nvim_tree_quit_on_open = 1 "0 by default, closes the tree when you open a file
 let g:vim_tree_git_hl = 1 "0 by default, will enable file highlight for git attributes (can be used without the icons).
-let g:nvim_tree_disable_window_picker = 0 "0 by default, will disable the window picker.
 let g:nvim_tree_icon_padding = ' ' "one space by default, used for rendering the space between the icon and the filename. Use with caution, it could break rendering if you set an empty string depending on your font.
 let g:nvim_tree_show_icons = {
     \ 'git': 1,
-    \ 'folders': 0,
+    \ 'folders': 1,
     \ 'files': 1,
-    \ 'folder_arrows': 0,
+    \ 'folder_arrows': 1,
     \ }
 "If 0, do not show the icons for one of 'git' 'folder' and 'files'
 "1 by default, notice that if 'files' is 1, it will only display
@@ -217,7 +240,7 @@ nnoremap <leader>n :NvimTreeFindFile<CR>
 set termguicolors " this variable must be enabled for colors to be applied properly
 
 " a list of groups can be found at `:help nvim_tree_highlight`
-highlight NvimTreeFolderIcon guibg=blue
+" highlight NvimTreeFolderIcon guibg=blue
 
 lua << EOF
 require'nvim-tree'.setup({
@@ -232,6 +255,11 @@ require'nvim-tree'.setup({
   update_to_buf_dir   = {
     enable = true,
     auto_open = true,
+  },
+  actions = {
+    open_file = {
+      quit_on_open = true
+    }
   },
   diagnostics = {
     enable = false,
@@ -342,8 +370,8 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> [d <Plug>(coc-diagnostic-prev)
+nmap <silent> ]d <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
@@ -388,7 +416,7 @@ xmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>a  <Plug>(coc-codeaction-selected)
 
 " Remap keys for applying codeAction to the current buffer.
-nmap <leader>ac  <Plug>(coc-codeaction)
+nmap <leader>ca  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
 
