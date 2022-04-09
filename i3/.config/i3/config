@@ -176,6 +176,9 @@ bindsym $mod+Shift+n exec --no-startup-id ~/dotfiles/bin/resolution
 for_window [title="notetaker_window"] floating enable
 bindsym $mod+n exec gnome-terminal -e /home/mateuszkowalke/Scripts/notes.sh -t notetaker_window
 
+# Emojis (needs rofi preinstalled)
+bindsym $mod+period exec --no-startup-id rofimoji
+
 # Moving workspaces between screens 
 bindsym $mod+p move workspace to output right
 
