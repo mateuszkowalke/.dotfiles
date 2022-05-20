@@ -102,6 +102,12 @@ export NVM_DIR="$HOME/.nvm"
 # go configuration
 export PATH=$PATH:/usr/local/go/bin
 
+# pico sdk configuration
+export PICO_SDK_PATH="$HOME/pico/pico-sdk"
+
+# esp-idf configuration
+alias get_idf='. $HOME/esp/esp-idf/export.sh'
+
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
