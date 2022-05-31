@@ -63,9 +63,6 @@ set cot=menuone,noinsert,noselect shm+=c
 let mapleader=" "
 set ft=nasm " syntax highlighting for nasm assembly
 set inccommand=nosplit                        " show substitutions incrementally
-" transparent background
-highlight Normal guibg=none
-highlight NonText guibg=none
 
 nnoremap Y y$ " make capital Y behave like vim
 
@@ -132,6 +129,10 @@ let g:UltiSnipsEditSplit="vertical"
 
 syntax enable
 colorscheme gruvbox
+
+" transparent background
+highlight Normal guibg=none
+highlight NonText guibg=none
 
 """""""""""""""""""""""""""""""""""""""""""
 """" Gitsigns config                   """"
