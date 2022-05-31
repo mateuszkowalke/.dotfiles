@@ -13,7 +13,6 @@ Plug 'pantharshit00/vim-prisma'
 Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-commentary'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'github/copilot.vim'
 
 " Styling stuff
 Plug 'vim-airline/vim-airline'

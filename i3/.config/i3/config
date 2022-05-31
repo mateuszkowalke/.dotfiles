@@ -38,7 +38,7 @@ floating_modifier $mod
 
 # start a terminal
 # bindsym $mod+Return exec i3-sensible-terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec alacritty
 
 # kill focused window
 # bindsym $mod+space exec "/home/theprimeagen/dotfiles/awesome-streamerrc/ThePrimeagen/tmux2"
@@ -167,6 +167,8 @@ bar {
 # CUSTOM KEYS START
 # ------------------------------------------
 exec --no-startup-id nm-applet
+exec --no-startup-id compton
+exec feh --randomize --bg-fill ~/Pictures/wallpapers*
 
 bindsym $mod+Shift+s exec --no-startup-id ~/dotfiles/bin/monitor
 bindsym $mod+Shift+n exec --no-startup-id ~/dotfiles/bin/resolution
