@@ -131,6 +131,7 @@ syntax enable
 colorscheme gruvbox
 
 " transparent background
+" needs to be defined after colorscheme is registered
 highlight Normal guibg=none
 highlight NonText guibg=none
 
