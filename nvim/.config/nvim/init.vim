@@ -19,7 +19,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " Colorscheme
-Plug 'morhetz/gruvbox'
+Plug 'mhartington/oceanic-next'
 
 " Git stuff
 Plug 'https://github.com/tpope/vim-fugitive'
@@ -63,6 +63,8 @@ set cot=menuone,noinsert,noselect shm+=c
 let mapleader=" "
 set ft=nasm " syntax highlighting for nasm assembly
 set inccommand=nosplit                        " show substitutions incrementally
+set termguicolors " this variable must be enabled for colors to be applied
+" properly by oceanic theme and nvim-tree
 
 nnoremap Y y$ " make capital Y behave like vim
 
@@ -128,12 +130,18 @@ let g:UltiSnipsEditSplit="vertical"
 """""""""""""""""""""""""""""""""""""""""""
 
 syntax enable
-colorscheme gruvbox
+let g:oceanic_next_terminal_bold = 1
+let g:oceanic_next_terminal_italic = 1
+colorscheme OceanicNext
+
+let g:airline_theme='oceanicnext'
 
 " transparent background
 " needs to be defined after colorscheme is registered
-highlight Normal guibg=none
-highlight NonText guibg=none
+hi Normal guibg=NONE ctermbg=NONE
+hi LineNr guibg=NONE ctermbg=NONE
+hi SignColumn guibg=NONE ctermbg=NONE
+hi EndOfBuffer guibg=NONE ctermbg=NONE
 
 """""""""""""""""""""""""""""""""""""""""""
 """" Gitsigns config                   """"
@@ -241,8 +249,6 @@ nnoremap <C-n> :NvimTreeToggle<CR>
 nnoremap <leader>r :NvimTreeRefresh<CR>
 nnoremap <leader>n :NvimTreeFindFile<CR>
 " NvimTreeOpen and NvimTreeClose are also available if you need them
-
-set termguicolors " this variable must be enabled for colors to be applied properly
 
 " a list of groups can be found at `:help nvim_tree_highlight`
 " highlight NvimTreeFolderIcon guibg=blue
