@@ -8,8 +8,7 @@ sudo apt install -y build-essential zsh stow fzf pip alacritty tmux
 
 # install hack nerd font
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip
-unzip Hack.zip -d ~/.fonts
-fc-cache -fv
+unzip Hack.zip -d ~/.local/share/fonts/NerdFonts
 rm -rf Hack.zip
 
 # workspaces mod

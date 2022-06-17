@@ -21,6 +21,9 @@ rm ~/.zshrc
 cd ~/.dotfiles
 stow nvim tmux zsh alacritty
 
+# install ohmyzsh
+sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
 # install vim-plugged
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
