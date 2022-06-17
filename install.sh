@@ -10,11 +10,12 @@ fi
 
 if cat /etc/os-release | grep -i "ubuntu" > /dev/null; then
     echo "detected ubuntu system"
+    sudo add-apt-repository ppa:mmstick76/alacritty
     sudo apt update
-    sudo apt install stow i3-wm i3status tmux compton alacritty
+    sudo apt install -y stow i3-wm i3status tmux compton alacritty
     rm -rf ~/.config/i3
     rm -rf ~/.config/i3status
-    sudo stow i3-wm i3status tmux compton alacritty
+    sudo stow i3 i3status tmux compton alacritty
 elif cat /etc/os-release | grep -i "arch" > /dev/null; then
     echo "detected arch system"
     sudo pacman -S stow i3-wm i3status tmux compton alacritty
