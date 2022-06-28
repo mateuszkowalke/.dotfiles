@@ -13,6 +13,8 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 # install neovim plugins
-nvim --headless +PlugInstall +qa
+# error output needs to redirected as there are plenty errors
+# after running neovim's config without plugins installed
+nvim --headless +PlugInstall +qa &>/dev/null
 
 printf "\n\n	You need to login again\n\n"

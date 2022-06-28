@@ -49,12 +49,13 @@ gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-10 "['<Super><S
 wget https://github.com/neovim/neovim/releases/download/v0.7.0/nvim-linux64.deb
 wget https://github.com/neovim/neovim/releases/download/v0.7.0/nvim-linux64.deb.sha256sum
 sha256sum nvim-linux64.deb
-sha256sum -c nvim-linux64.deb.sha256sum
-# TODO
-# the correct output for checking sha256sum is:
-# nvim-linux64.deb: OK
+if ((sha256sum -c nvim-linux64.deb.sha256sum) != "nvim-linux64.deb: OK")
+then
+    rm -rf nvim-linux*
+    printf "\n\n    Checksum for neovim not matching - exiting!\n\n"
+    exit 1
+fi
 sudo apt install ./nvim-linux64.deb
-rm -rf nvim-linux*
 pip3 install pynvim
 
-printf "\n\n	You need to login again and continue with after_install_2.sh\n\n"
+printf "\n\n	Continue with after_install_2.sh\n\n"
