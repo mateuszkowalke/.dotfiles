@@ -49,13 +49,32 @@ gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-10 "['<Super><S
 wget https://github.com/neovim/neovim/releases/download/v0.7.0/nvim-linux64.deb
 wget https://github.com/neovim/neovim/releases/download/v0.7.0/nvim-linux64.deb.sha256sum
 sha256sum nvim-linux64.deb
-if ((sha256sum -c nvim-linux64.deb.sha256sum) != "nvim-linux64.deb: OK")
+
+if ($(sha256sum -c nvim-linux64.deb.sha256sum) != "nvim-linux64.deb: OK")
 then
     rm -rf nvim-linux*
     printf "\n\n    Checksum for neovim not matching - exiting!\n\n"
     exit 1
 fi
+
 sudo apt install ./nvim-linux64.deb
 pip3 install pynvim
 
-printf "\n\n	Continue with after_install_2.sh\n\n"
+# install nvm and node
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | zsh
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+nvm install --lts
+
+# install rustup
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+# install yarn - needed for some neovim plugins
+npm install --global yarn
+
+# create a directory for projects
+mkdir -p ~/Projects
+
+# install ohmyzsh
+sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"

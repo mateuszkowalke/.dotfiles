@@ -1,20 +1,20 @@
 #!/bin/bash
 
-# install nvm and node
-wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | zsh
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
-nvm install --lts
+# install powerlevel10k theme
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
-# install rustup
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+# stow configs
+rm ~/.zshrc
+cd ~/.dotfiles
+stow nvim tmux zsh alacritty
 
-# install yarn - needed for some neovim plugins
-npm install --global yarn
+# install vim-plugged
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-# create a directory for projects
-mkdir -p ~/Projects
+# install neovim plugins
+# error output needs to redirected as there are plenty errors
+# after running neovim's config without plugins installed
+nvim --headless +PlugInstall +qa &>/dev/null
 
-# install ohmyzsh
-sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+printf "\n\n	You need to login again\n\n"
