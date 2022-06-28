@@ -57,8 +57,4 @@ sudo apt install ./nvim-linux64.deb
 rm -rf nvim-linux*
 pip3 install pynvim
 
-# set alacritty as default terminal emulator
-# sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator `which alacritty` 50
-sudo update-alternatives --config x-terminal-emulator
-
 printf "\n\n	You need to login again and continue with after_install_2.sh\n\n"

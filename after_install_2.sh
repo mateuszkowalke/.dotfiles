@@ -16,4 +16,5 @@ npm install --global yarn
 # install ohmyzsh
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-printf "\n\n Now run ./after_install_3.sh \n\n"
+# create a directory for projects
+mkdir -p ~/Projects

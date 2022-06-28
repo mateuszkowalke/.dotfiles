@@ -8,4 +8,4 @@ After installing fresh pop os, first run:
 sudo apt update && sudo apt upgrade -y
 ```
 
-Then run after_install.sh and after_install_2.sh scripts following instructions.
+Then run after_install scripts in order and provide required input when prompted.

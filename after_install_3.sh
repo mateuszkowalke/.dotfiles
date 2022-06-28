@@ -15,4 +15,4 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 # install neovim plugins
 nvim --headless +PlugInstall +qa
 
-printf "\n\n	You need to reopen you terminal\n\n"
+printf "\n\n	You need to login again\n\n"
