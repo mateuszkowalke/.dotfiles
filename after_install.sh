@@ -8,6 +8,7 @@ sudo apt install -y build-essential zsh stow fzf pip alacritty tmux
 
 # install hack nerd font
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip
+mkdir -p ~/.local/share/fonts/NerdFonts
 unzip Hack.zip -d ~/.local/share/fonts/NerdFonts
 rm -rf Hack.zip
 
@@ -60,4 +61,4 @@ pip3 install pynvim
 sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator `which alacritty` 50
 sudo update-alternatives --config x-terminal-emulator
 
-echo '\n\n	You need to login again and continue with after_install_2.sh\n\n'
+echo '\r\r	You need to login again and continue with after_install_2.sh\r\r'

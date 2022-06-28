@@ -28,4 +28,7 @@ sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-echo '\n\n	You need to reopen you terminal\n\n'
+# install neovim plugins
+nvim --headless +PlugInstall +qall
+
+echo '\r\r	You need to reopen you terminal\r\r'
