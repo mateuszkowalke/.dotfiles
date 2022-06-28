@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# install powerlevel10k theme
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+
 # stow configs
 rm ~/.zshrc
 cd ~/.dotfiles
@@ -12,4 +15,4 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 # install neovim plugins
 nvim --headless +PlugInstall +qall
 
-echo '\r\r	You need to reopen you terminal\r\r'
+printf "\n\n	You need to reopen you terminal\n\n"

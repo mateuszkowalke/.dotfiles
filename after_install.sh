@@ -61,4 +61,4 @@ pip3 install pynvim
 # sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator `which alacritty` 50
 sudo update-alternatives --config x-terminal-emulator
 
-echo '\r\r	You need to login again and continue with after_install_2.sh\r\r'
+printf "\n\n	You need to login again and continue with after_install_2.sh\n\n"

@@ -16,4 +16,4 @@ npm install --global yarn
 # install ohmyzsh
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-echo "\n\n Now run ./after_install_3.sh \n\n"
+printf "\n\n Now run ./after_install_3.sh \n\n"
