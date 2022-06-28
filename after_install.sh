@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# update, upgrade and install necessary packages
+# update and install necessary packages
 # repository for alacritty
 sudo add-apt-repository ppa:aslatter/ppa
-sudo apt update && sudo apt upgrade -y
+sudo apt update
 sudo apt install -y build-essential zsh stow fzf pip alacritty tmux
 
 # install hack nerd font
@@ -58,7 +58,7 @@ rm -rf nvim-linux*
 pip3 install pynvim
 
 # set alacritty as default terminal emulator
-sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator `which alacritty` 50
+# sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator `which alacritty` 50
 sudo update-alternatives --config x-terminal-emulator
 
 echo '\r\r	You need to login again and continue with after_install_2.sh\r\r'
