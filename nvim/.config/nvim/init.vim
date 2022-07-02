@@ -32,6 +32,9 @@ Plug 'nvim-lua/popup.nvim' "telescope dependency
 Plug 'nvim-lua/plenary.nvim' "telescope dependency
 Plug 'nvim-telescope/telescope.nvim'
 
+" Notes
+Plug 'vimwiki/vimwiki'
+
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""
@@ -65,6 +68,7 @@ set ft=nasm " syntax highlighting for nasm assembly
 set inccommand=nosplit                        " show substitutions incrementally
 set termguicolors " this variable must be enabled for colors to be applied
 " properly by oceanic theme and nvim-tree
+set nocompatible " needed by vimwiki
 
 nnoremap Y y$ " make capital Y behave like vim
 
@@ -484,3 +488,12 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""
+"""" VimWiki config                    """"
+"""""""""""""""""""""""""""""""""""""""""""
+
+let g:vimwiki_list = [{'path': '~/Notes/', 'syntax': 'markdown', 'ext': '.md'}]
+au filetype vimwiki silent! iunmap <buffer> <Tab>
+au filetype vimwiki silent! iunmap <buffer> <Shift-Tab>
+
