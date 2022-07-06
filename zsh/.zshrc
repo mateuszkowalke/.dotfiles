@@ -9,7 +9,7 @@ fi
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/mateuszkowalke/.oh-my-zsh"
+export ZSH="${HOME}/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -102,6 +102,12 @@ export NVM_DIR="$HOME/.nvm"
 # go configuration
 export PATH=$PATH:/usr/local/go/bin
 
+# pico sdk configuration
+export PICO_SDK_PATH="$HOME/pico/pico-sdk"
+
+# esp-idf configuration
+alias get_idf='. $HOME/esp/esp-idf/export.sh'
+
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
@@ -130,8 +136,14 @@ alias polscape='ssh -i ~/.ssh/staging-intevicloud.pem ubuntu@ec2-54-246-30-125.e
 alias pointgrab='ssh -i ~/.ssh/staging-intevicloud.pem ubuntu@ec2-34-254-198-32.eu-west-1.compute.amazonaws.com'
 alias develop-itb='ssh -i ~/.ssh/staging-intevicloud.pem ubuntu@ec2-54-74-47-196.eu-west-1.compute.amazonaws.com'
 alias develop-sensor-cloud='ssh -i ~/.ssh/intevi-microservices.pem ubuntu@ec2-34-242-195-120.eu-west-1.compute.amazonaws.com'
+alias staging-sensor-cloud='ssh -i ~/.ssh/intevi-microservices.pem ubuntu@ec2-54-74-225-172.eu-west-1.compute.amazonaws.com'
+alias develop-idx='ssh -i ~/.ssh/staging-intevicloud.pem ubuntu@ec2-54-228-87-244.eu-west-1.compute.amazonaws.com'
+alias get-idf='. $HOME/esp/esp-idf/export.sh'
 
 alias ll='ls -alF'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
