@@ -1,10 +1,15 @@
 #!/bin/bash
 
-# update and install necessary packages
-# repository for alacritty
+# add repository for alacritty
 sudo add-apt-repository ppa:aslatter/ppa
+
+# update and install necessary packages
 sudo apt update
 sudo apt install -y build-essential zsh stow fzf pip alacritty tmux
+
+# install pyenv's dependencies
+sudo apt-get install git python-pip make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev curl python3-pip libffi-dev
+pip3 install virtualenvwrapper
 
 # install hack nerd font
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip
@@ -56,9 +61,14 @@ then
     printf "\n\n    Checksum for neovim not matching - exiting!\n\n"
     exit 1
 fi
+rm -rf nvim-linux*
 
 sudo apt install ./nvim-linux64.deb
 pip3 install pynvim
+
+# install pyenv
+git clone https://github.com/yyuu/pyenv.git ~/.pyenv
+git clone https://github.com/yyuu/pyenv-virtualenvwrapper.git ~/.pyenv/plugins/pyenv-virtualenvwrapper
 
 # install nvm and node
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | zsh
