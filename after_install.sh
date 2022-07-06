@@ -61,9 +61,9 @@ then
     printf "\n\n    Checksum for neovim not matching - exiting!\n\n"
     exit 1
 fi
-rm -rf nvim-linux*
 
 sudo apt install ./nvim-linux64.deb
+rm -rf nvim-linux*
 pip3 install pynvim
 
 # install pyenv
