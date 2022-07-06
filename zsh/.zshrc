@@ -137,6 +137,7 @@ alias pointgrab='ssh -i ~/.ssh/staging-intevicloud.pem ubuntu@ec2-34-254-198-32.
 alias develop-itb='ssh -i ~/.ssh/staging-intevicloud.pem ubuntu@ec2-54-74-47-196.eu-west-1.compute.amazonaws.com'
 alias develop-sensor-cloud='ssh -i ~/.ssh/intevi-microservices.pem ubuntu@ec2-34-242-195-120.eu-west-1.compute.amazonaws.com'
 alias staging-sensor-cloud='ssh -i ~/.ssh/intevi-microservices.pem ubuntu@ec2-54-74-225-172.eu-west-1.compute.amazonaws.com'
+alias develop-idx='ssh -i ~/.ssh/staging-intevicloud.pem ubuntu@ec2-54-228-87-244.eu-west-1.compute.amazonaws.com'
 alias get-idf='. $HOME/esp/esp-idf/export.sh'
 
 alias ll='ls -alF'
