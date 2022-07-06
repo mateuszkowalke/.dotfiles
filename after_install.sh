@@ -5,7 +5,7 @@ sudo add-apt-repository ppa:aslatter/ppa
 
 # update and install necessary packages
 sudo apt update
-sudo apt install -y build-essential zsh stow fzf pip alacritty tmux
+sudo apt install -y build-essential zsh stow fzf pip alacritty tmux lm-sensors
 
 # install pyenv's dependencies
 sudo apt-get install git python-pip make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev curl python3-pip libffi-dev
@@ -88,3 +88,6 @@ mkdir -p ~/Projects
 
 # install ohmyzsh
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# install docker
+sh ./docker_install.sh
