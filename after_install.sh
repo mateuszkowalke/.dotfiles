@@ -70,6 +70,9 @@ pip3 install pynvim
 git clone https://github.com/yyuu/pyenv.git ~/.pyenv
 git clone https://github.com/yyuu/pyenv-virtualenvwrapper.git ~/.pyenv/plugins/pyenv-virtualenvwrapper
 
+# install pyenv virtualenv pluign and configure it to activate virtualenvs when in directory
+git clone https://github.com/pyenv/pyenv-virtualenv.git $(pyenv root)/plugins/pyenv-virtualenv
+
 # install nvm and node
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | zsh
 export NVM_DIR="$HOME/.nvm"
