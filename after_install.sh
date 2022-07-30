@@ -1,14 +1,13 @@
 #!/bin/bash
 
-# add repository for alacritty
-sudo add-apt-repository ppa:aslatter/ppa
-
 # update and install necessary packages
 sudo apt update
-sudo apt install -y build-essential zsh stow fzf pip alacritty tmux lm-sensors
+sudo apt install -y build-essential zsh stow fzf pip tmux lm-sensors
 
 # install pyenv's dependencies
-sudo apt-get install git python-pip make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev curl python3-pip libffi-dev
+sudo apt-get install git python-pip make build-essential libssl-dev zlib1g-dev \
+    libbz2-dev libreadline-dev libsqlite3-dev curl python3-pip libffi-dev \
+    taskwarrior
 pip3 install virtualenvwrapper
 
 # install hack nerd font

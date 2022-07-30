@@ -6,7 +6,7 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 # stow configs
 rm ~/.zshrc
 cd ~/.dotfiles
-stow nvim tmux zsh alacritty
+stow nvim tmux zsh
 
 # install vim-plugged
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
@@ -17,4 +17,4 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 # after running neovim's config without plugins installed
 nvim --headless +PlugInstall +qa &>/dev/null
 
-printf "\n\n	You need to login again\n\n"
+printf "\n\nRemember to set your font to Hack Nerd Font.\n\n	You need to login again\n\n"
