@@ -229,7 +229,7 @@ require'nvim-tree'.setup({
   open_on_tab         = false,
   hijack_cursor       = false,
   update_cwd          = false,
-  update_to_buf_dir   = {
+  hijack_directories  = {
     enable = true,
     auto_open = true,
   },
@@ -267,7 +267,8 @@ require'nvim-tree'.setup({
   },
   actions = {
     open_file = {
-      quit_on_open = true
+      quit_on_open = true,
+      resize_window = false
     }
   },
   diagnostics = {
@@ -302,7 +303,6 @@ require'nvim-tree'.setup({
     height = 30,
     hide_root_folder = false,
     side = 'left',
-    auto_resize = false,
     mappings = {
       custom_only = false,
       list = {}
