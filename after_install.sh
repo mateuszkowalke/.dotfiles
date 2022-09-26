@@ -1,8 +1,16 @@
 #!/bin/bash
 
+# add brave's repo
+sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
+
+# add pgAdmin repo
+sudo curl https://www.pgadmin.org/static/packages_pgadmin_org.pub | sudo apt-key add
+sudo sh -c 'echo "deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_release -cs) pgadmin4 main" > /etc/apt/sources.list.d/pgadmin4.list && apt update'
+
 # update and install necessary packages
 sudo apt update
-sudo apt install -y build-essential zsh stow fzf pip tmux lm-sensors
+sudo apt install -y apt-transport-https build-essential zsh stow fzf pip tmux lm-sensors brave-browser pgadmin4
 
 # install pyenv's dependencies
 sudo apt-get install git python-pip make build-essential libssl-dev zlib1g-dev \

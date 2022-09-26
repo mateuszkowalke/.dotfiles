@@ -17,4 +17,4 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 # after running neovim's config without plugins installed
 nvim --headless +PlugInstall +qa &>/dev/null
 
-printf "\n\nRemember to set your font to Hack Nerd Font.\n\n	You need to login again\n\n"
+printf "\n\nRemember to set your font to Hack Nerd Font in terminal emulator.\n\n	You need to login again\n\n"
