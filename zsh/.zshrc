@@ -130,16 +130,6 @@ alias get_idf='. $HOME/esp/esp-idf/export.sh'
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias microservices="ssh -i ~/.ssh/intevi-microservices.pem ubuntu@ec2-18-200-143-97.eu-west-1.compute.amazonaws.com"
-alias influx="ssh -i ~/.ssh/staging-intevicloud.pem ubuntu@ec2-54-170-116-155.eu-west-1.compute.amazonaws.com"
-alias polscape='ssh -i ~/.ssh/staging-intevicloud.pem ubuntu@ec2-54-246-30-125.eu-west-1.compute.amazonaws.com'
-alias pointgrab='ssh -i ~/.ssh/staging-intevicloud.pem ubuntu@ec2-34-254-198-32.eu-west-1.compute.amazonaws.com'
-alias develop-itb='ssh -i ~/.ssh/staging-intevicloud.pem ubuntu@ec2-54-74-47-196.eu-west-1.compute.amazonaws.com'
-alias develop-sensor-cloud='ssh -i ~/.ssh/intevi-microservices.pem ubuntu@ec2-34-242-195-120.eu-west-1.compute.amazonaws.com'
-alias staging-sensor-cloud='ssh -i ~/.ssh/intevi-microservices.pem ubuntu@ec2-54-74-225-172.eu-west-1.compute.amazonaws.com'
-alias develop-idx='ssh -i ~/.ssh/staging-intevicloud.pem ubuntu@ec2-54-228-87-244.eu-west-1.compute.amazonaws.com'
-alias get-idf='. $HOME/esp/esp-idf/export.sh'
-
 alias ll='ls -alF'
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -147,4 +137,3 @@ alias ll='ls -alF'
 export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"

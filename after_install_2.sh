@@ -6,7 +6,7 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 # stow configs
 rm ~/.zshrc
 cd ~/.dotfiles
-stow nvim tmux zsh
+stow nvim tmux zsh i3 i3status alacritty
 
 # install vim-plugged
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \

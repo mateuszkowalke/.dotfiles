@@ -11,7 +11,8 @@ sudo sh -c 'echo "deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_
 # update and install necessary packages
 # ripgrep is needed for nvim telescope to work properly
 sudo apt update
-sudo apt install -y apt-transport-https build-essential zsh stow fzf pip tmux lm-sensors brave-browser pgadmin4 ripgrep
+sudo apt install -y apt-transport-https build-essential zsh i3-wm i3-status dmenu \
+    stow fzf pip tmux lm-sensors brave-browser pgadmin4 ripgrep
 
 # install pyenv's dependencies
 sudo apt-get install git python-pip make build-essential libssl-dev zlib1g-dev \
@@ -90,6 +91,9 @@ nvm install --lts
 
 # install rustup
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+# install alacritty - depends on rust already being on the system
+cargo install alacritty
 
 # install yarn - needed for some neovim plugins
 npm install --global yarn

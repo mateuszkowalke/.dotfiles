@@ -320,7 +320,7 @@ EOF
 """""""""""""""""""""""""""""""""""""""""""
 
 " Make sure needed extensions are always installed
-let g:coc_global_extensions = ['coc-tsserver', 'coc-prisma', 'coc-prettier', 'coc-html', 'coc-css', 'coc-json', 'coc-go', 'coc-rust-analyzer']
+let g:coc_global_extensions = ['coc-tsserver', 'coc-prisma', 'coc-sh', 'coc-prettier', 'coc-html', 'coc-css', 'coc-json', 'coc-go', 'coc-rust-analyzer', 'coc-sql']
 
 " Set internal encoding of vim, not needed on neovim, since coc.nvim using some
 " unicode characters in the file autoload/float.vim
