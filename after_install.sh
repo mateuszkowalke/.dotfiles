@@ -11,7 +11,7 @@ sudo sh -c 'echo "deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_
 # update and install necessary packages
 # ripgrep is needed for nvim telescope to work properly
 sudo apt update
-sudo apt install -y apt-transport-https build-essential zsh i3-wm i3-status dmenu \
+sudo apt install -y apt-transport-https build-essential zsh i3-wm i3status dmenu \
     stow fzf pip tmux lm-sensors brave-browser pgadmin4 ripgrep
 
 # install pyenv's dependencies
