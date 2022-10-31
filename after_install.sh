@@ -12,13 +12,16 @@ sudo sh -c 'echo "deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_
 # ripgrep is needed for nvim telescope to work properly
 sudo apt update
 sudo apt install -y apt-transport-https build-essential zsh i3-wm i3status dmenu \
-    stow fzf pip tmux lm-sensors brave-browser pgadmin4 ripgrep
+    stow fzf pip tmux lm-sensors brave-browser pgadmin4 ripgrep maim xclip
 
 # install pyenv's dependencies
 sudo apt-get install git python-pip make build-essential libssl-dev zlib1g-dev \
     libbz2-dev libreadline-dev libsqlite3-dev curl python3-pip libffi-dev \
     taskwarrior
 pip3 install virtualenvwrapper
+
+# git aliases
+sh ./git_aliases.sh
 
 # install hack nerd font
 wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip
