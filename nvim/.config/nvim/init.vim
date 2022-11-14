@@ -71,6 +71,10 @@ set termguicolors " this variable must be enabled for colors to be applied
 set nocompatible " needed by vimwiki
 
 nnoremap Y y$ " make capital Y behave like vim
+nnoremap <C+u> <C+u>zz
+nnoremap <C+d> <C+d>zz
+nnoremap n nzz
+nnoremap * *zz
 
 """""""""""""""""""""""""""""""""""""""""""
 """" Telescope config                  """"
