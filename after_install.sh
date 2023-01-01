@@ -63,8 +63,8 @@ gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-9 "['<Super><Sh
 gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-10 "['<Super><Shift>0']"
 
 # install neovim
-wget https://github.com/neovim/neovim/releases/download/v0.7.0/nvim-linux64.deb
-wget https://github.com/neovim/neovim/releases/download/v0.7.0/nvim-linux64.deb.sha256sum
+wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.deb
+wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.deb.sha256sum
 sha256sum nvim-linux64.deb
 
 if ($(sha256sum -c nvim-linux64.deb.sha256sum) != "nvim-linux64.deb: OK")
