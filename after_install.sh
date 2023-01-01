@@ -12,7 +12,7 @@ sudo sh -c 'echo "deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_
 # ripgrep is needed for nvim telescope to work properly
 sudo apt update
 sudo apt install -y apt-transport-https build-essential zsh i3-wm i3status dmenu \
-    stow fzf pip tmux lm-sensors brave-browser pgadmin4 ripgrep maim xclip
+    stow fzf pip tmux lm-sensors brave-browser pgadmin4 ripgrep maim xclip feh compton
 
 # install pyenv's dependencies
 sudo apt-get install git python-pip make build-essential libssl-dev zlib1g-dev \
@@ -30,37 +30,7 @@ unzip Hack.zip -d ~/.local/share/fonts/NerdFonts
 rm -rf Hack.zip
 
 # workspaces mod
-gsettings set org.gnome.mutter dynamic-workspaces false 
-gsettings set org.gnome.desktop.wm.preferences num-workspaces 8
-gsettings set org.gnome.shell.keybindings switch-to-application-1 [] 
-gsettings set org.gnome.shell.keybindings switch-to-application-2 [] 
-gsettings set org.gnome.shell.keybindings switch-to-application-3 [] 
-gsettings set org.gnome.shell.keybindings switch-to-application-4 [] 
-gsettings set org.gnome.shell.keybindings switch-to-application-5 [] 
-gsettings set org.gnome.shell.keybindings switch-to-application-6 [] 
-gsettings set org.gnome.shell.keybindings switch-to-application-7 [] 
-gsettings set org.gnome.shell.keybindings switch-to-application-8 [] 
-gsettings set org.gnome.shell.keybindings switch-to-application-9 [] 
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-1 "['<Super>1']" 
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-2 "['<Super>2']" 
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-3 "['<Super>3']" 
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-4 "['<Super>4']" 
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-5 "['<Super>5']" 
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-6 "['<Super>6']" 
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-7 "['<Super>7']" 
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-8 "['<Super>8']" 
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-9 "['<Super>9']" 
-gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-10 "['<Super>0']" 
-gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-1 "['<Super><Shift>1']" 
-gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-2 "['<Super><Shift>2']" 
-gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-3 "['<Super><Shift>3']" 
-gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-4 "['<Super><Shift>4']" 
-gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-5 "['<Super><Shift>5']" 
-gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-6 "['<Super><Shift>6']" 
-gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-7 "['<Super><Shift>7']" 
-gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-8 "['<Super><Shift>8']" 
-gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-9 "['<Super><Shift>9']" 
-gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-10 "['<Super><Shift>0']"
+./gnome_workspaces_mod.sh
 
 # install neovim
 wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.deb
