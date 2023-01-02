@@ -33,19 +33,11 @@ rm -rf Hack.zip
 ./gnome_workspaces_mod.sh
 
 # install neovim
-wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.deb
-wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.deb.sha256sum
-sha256sum nvim-linux64.deb
+./nvim_install.sh
 
-if ($(sha256sum -c nvim-linux64.deb.sha256sum) != "nvim-linux64.deb: OK")
-then
-    rm -rf nvim-linux*
-    printf "\n\n    Checksum for neovim not matching - exiting!\n\n"
-    exit 1
-fi
+# install obsidian
+./obsidian_install.sh
 
-sudo apt install ./nvim-linux64.deb
-rm -rf nvim-linux*
 pip3 install pynvim
 
 # install pyenv
