@@ -37,6 +37,7 @@ rm -rf Hack.zip
 
 # install obsidian
 ./obsidian_install.sh
+git clone git@github.com:mateuszkowalke/notes.git ~/notes
 
 pip3 install pynvim
 
