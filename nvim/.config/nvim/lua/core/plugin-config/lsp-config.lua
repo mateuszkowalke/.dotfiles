@@ -3,6 +3,8 @@ require('mason-lspconfig').setup({
     ensure_installed = { "sumneko_lua", "tsserver" }
 })
 
+local lsp_config = require('lspconfig')
+
 local on_attach = function(_, _)
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
@@ -28,7 +30,7 @@ end
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
-require('lspconfig').sumneko_lua.setup {
+lsp_config.sumneko_lua.setup {
     on_attach = on_attach,
     capabilities = capabilities,
     settings = {
@@ -46,6 +48,12 @@ require('lspconfig').sumneko_lua.setup {
     }
 }
 
-require('lspconfig').tsserver.setup {
-    on_attach = on_attach
+lsp_config.denols.setup {
+  on_attach = on_attach,
+  root_dir = lsp_config.util.root_pattern("deno.json", "deno.jsonc"),
+}
+
+lsp_config.tsserver.setup {
+  on_attach = on_attach,
+  root_dir = lsp_config.util.root_pattern("package.json"),
 }

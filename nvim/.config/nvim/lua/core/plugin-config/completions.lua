@@ -59,5 +59,8 @@ cmp.event:on(
     cmp_autopairs.on_confirm_done()
 )
 
--- vim-commentary config
-vim.keymap.set('n', '<leader>/', vim.cmd.Commentary)
+-- nvim-comment setup
+require('nvim_comment').setup()
+vim.keymap.set('n', '<leader>/', ':CommentToggle<CR>')
+vim.keymap.set('x', '<leader>/', ':CommentToggle<CR>')
+vim.keymap.set('o', '<leader>/', ':CommentToggle<CR>')

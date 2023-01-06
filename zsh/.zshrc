@@ -106,6 +106,10 @@ export NVM_DIR="$HOME/.nvm"
 # go configuration
 export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
 
+# deno configuration
+export DENO_INSTALL="$HOME/.deno"
+export PATH="$DENO_INSTALL/bin:$PATH"
+
 # pico sdk configuration
 export PICO_SDK_PATH="$HOME/pico/pico-sdk"
 
