@@ -35,20 +35,21 @@ return require('packer').startup(function(use)
     use 'saadparwaiz1/cmp_luasnip'
     use 'rafamadriz/friendly-snippets'
     use {
-        "windwp/nvim-autopairs",
-        config = function() require("nvim-autopairs").setup {} end
+        'windwp/nvim-autopairs',
+        config = function() require('nvim-autopairs').setup {} end
     }
     use 'theprimeagen/harpoon'
     use 'mbbill/undotree'
     use 'tpope/vim-fugitive'
-    use "terrortylor/nvim-comment"
-    use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
-    use { "mxsdev/nvim-dap-vscode-js", requires = { "mfussenegger/nvim-dap" } }
+    use 'terrortylor/nvim-comment'
+    use { 'rcarriga/nvim-dap-ui', requires = { 'mfussenegger/nvim-dap' } }
+    use { 'mxsdev/nvim-dap-vscode-js', requires = { 'mfussenegger/nvim-dap' } }
     use {
-        "microsoft/vscode-js-debug",
+        'microsoft/vscode-js-debug',
         opt = true,
-        run = "npm install --legacy-peer-deps && npm run compile"
+        run = 'npm install --legacy-peer-deps && npm run compile'
     }
+    use 'vimwiki/vimwiki'
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
