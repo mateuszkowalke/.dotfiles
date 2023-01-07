@@ -23,11 +23,8 @@ pip3 install virtualenvwrapper
 # git aliases
 sh ./git_aliases.sh
 
-# install hack nerd font
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip
-mkdir -p ~/.local/share/fonts/NerdFonts
-unzip Hack.zip -d ~/.local/share/fonts/NerdFonts
-rm -rf Hack.zip
+# install patched font
+./font_install.sh
 
 # workspaces mod
 ./gnome_workspaces_mod.sh
@@ -35,8 +32,7 @@ rm -rf Hack.zip
 # install neovim
 ./nvim_install.sh
 
-# install obsidian
-./obsidian_install.sh
+# clone notes
 git clone git@github.com:mateuszkowalke/notes.git ~/Notes
 
 pip3 install pynvim

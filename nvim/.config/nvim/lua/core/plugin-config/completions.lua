@@ -1,5 +1,7 @@
 -- all default options are set for luasnip snippets
 local cmp = require('cmp')
+local luasnip = require('luasnip')
+luasnip.setup({})
 
 require('luasnip.loaders.from_vscode').lazy_load()
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
@@ -14,7 +16,7 @@ cmp.setup({
     -- snippets are required
     snippet = {
         expand = function(args)
-            require('luasnip').lsp_expand(args.body)
+            luasnip.lsp_expand(args.body)
         end,
     },
     mapping = cmp.mapping.preset.insert({

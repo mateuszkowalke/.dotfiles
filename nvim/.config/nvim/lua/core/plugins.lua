@@ -44,11 +44,6 @@ return require('packer').startup(function(use)
     use 'terrortylor/nvim-comment'
     use { 'rcarriga/nvim-dap-ui', requires = { 'mfussenegger/nvim-dap' } }
     use { 'mxsdev/nvim-dap-vscode-js', requires = { 'mfussenegger/nvim-dap' } }
-    use {
-        'microsoft/vscode-js-debug',
-        opt = true,
-        run = 'npm install --legacy-peer-deps && npm run compile'
-    }
     use 'vimwiki/vimwiki'
 
     -- Automatically set up your configuration after cloning packer.nvim
