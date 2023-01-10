@@ -34,6 +34,7 @@ return require('packer').startup(function(use)
     use 'L3MON4D3/LuaSnip'
     use 'saadparwaiz1/cmp_luasnip'
     use 'rafamadriz/friendly-snippets'
+    use 'mhartington/formatter.nvim'
     use {
         'windwp/nvim-autopairs',
         config = function() require('nvim-autopairs').setup {} end

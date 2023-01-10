@@ -49,11 +49,43 @@ lsp_config.sumneko_lua.setup {
 }
 
 lsp_config.denols.setup {
-  on_attach = on_attach,
-  root_dir = lsp_config.util.root_pattern("deno.json", "deno.jsonc"),
+    on_attach = on_attach,
+    root_dir = lsp_config.util.root_pattern("deno.json", "deno.jsonc"),
 }
 
 lsp_config.tsserver.setup {
-  on_attach = on_attach,
-  root_dir = lsp_config.util.root_pattern("package.json"),
+    on_attach = function(_, _)
+        on_attach(_, _)
+        vim.keymap.set('n', '<leader>f', ':Format<CR>')
+        vim.keymap.set('n', '<leader>F', ':FormatWrite<CR>')
+    end,
+    root_dir = lsp_config.util.root_pattern("package.json"),
 }
+
+lsp_config['eslint'].setup({})
+
+require("formatter").setup(
+    {
+        logging = true,
+        filetype = {
+            typescriptreact = {
+                require("formatter.filetypes.typescriptreact").prettier,
+            },
+            typescript = {
+                require("formatter.filetypes.typescript").prettier,
+            },
+            javascriptreact = {
+                require("formatter.filetypes.javascriptreact").prettier,
+            },
+            javascript = {
+                require("formatter.filetypes.javascript").prettier,
+            },
+            json = {
+                require("formatter.filetypes.json").prettier,
+            },
+            lua = {
+                require("formatter.filetypes.lua").stylua,
+            }
+        }
+    }
+)
