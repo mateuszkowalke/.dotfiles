@@ -1,61 +1,28 @@
-local dap = require('dap')
+local dap, dapui = require('dap'), require("dapui")
 
--- setup adapters
-require('dap-vscode-js').setup({
-    debugger_path = vim.fn.stdpath('data') .. '/mason/packages/js-debug-adapter',
-    debugger_cmd = { 'js-debug-adapter' },
-    adapters = { 'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost' },
-})
-
--- language config
-for _, language in ipairs({ 'typescript', 'javascript' }) do
-    dap.configurations[language] = {
-        {
-            name = 'Launch',
-            type = 'pwa-node',
-            request = 'launch',
-            cwd = vim.fn.getcwd(),
-            runtimeArgs = { '-r', 'ts-node/register' },
-            runtimeExecutable = 'node',
-            args = { '--inspect', '${file}' },
-            skipFiles = { '<node_internals>/**', 'node_modules/**' },
-            sourceMaps = true,
-            resolveSourceMapLocations = {
-                "${workspaceFolder}/**",
-                "!**/node_modules/**"
-            },
-        },
-        {
-            name = 'Attach to node process',
-            type = 'pwa-node',
-            request = 'attach',
-            cwd = vim.fn.getcwd(),
-            sourceMaps = true,
-            skipFiles = { '<node_internals>/**' },
-            port = 9229,
-        }
-    }
+-- register dapui to open and close on debugging sessions
+dap.listeners.after.event_initialized["dapui_config"] = function()
+    dapui.open()
+end
+dap.listeners.before.event_terminated["dapui_config"] = function()
+    dapui.close()
+end
+dap.listeners.before.event_exited["dapui_config"] = function()
+    dapui.close()
 end
 
--- nvim-dap-ui config
-local dapui = require("dapui")
 dapui.setup()
 
 -- debugging keymaps
-vim.keymap.set('n', '<leader>ds', function ()
-    dap.continue()
-    dapui.open()
-end)
-vim.keymap.set('n', '<leader>dk', function ()
-    dapui.close()
-    dap.close()
-end)
-vim.keymap.set('n', '<leader>dt', dap.toggle_breakpoint)
-vim.keymap.set('n', '<leader>dT', dap.clear_breakpoints)
-vim.keymap.set('n', '<leader>dc', dap.continue)
-vim.keymap.set('n', '<leader>dh', dap.step_out)
-vim.keymap.set('n', '<leader>dl', dap.step_into)
-vim.keymap.set('n', '<leader>dj', dap.step_over)
+vim.keymap.set('n', '<leader>ds', ":lua require'dap'.continue()<CR>")
+vim.keymap.set('n', '<leader>dk', ":lua require'dap'.terminate()<CR>")
+vim.keymap.set('n', '<leader>dt', ":lua require'dap'.toggle_breakpoint()<CR>")
+vim.keymap.set('n', '<leader>dT', ":lua require'dap'.clear_breakpoints()<CR>")
+vim.keymap.set('n', '<leader>dc', ":lua require'dap'.continue()<CR>")
+vim.keymap.set('n', '<leader>dh', ":lua require'dap'.step_out()<CR>")
+vim.keymap.set('n', '<leader>dl', ":lua require'dap'.step_into()<CR>")
+vim.keymap.set('n', '<leader>dj', ":lua require'dap'.step_over()<CR>")
+vim.keymap.set('n', '<leader>db', ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
 -- nmap <leader>de :VimspectorEval
 -- nmap <leader>dw :VimspectorWatch
 -- nmap <leader>do :VimspectorShowOutput
@@ -65,3 +32,62 @@ vim.keymap.set('n', '<leader>dj', dap.step_over)
 -- " for visual mode, the visually selected text
 -- xmap <Leader>di <Plug>VimspectorBalloonEval
 
+-- mapping for 'K' to dap.ui.widgets.hover() while in debugging session
+local api = vim.api
+local keymap_restore = {}
+dap.listeners.after['event_initialized']['me'] = function()
+  for _, buf in pairs(api.nvim_list_bufs()) do
+    local keymaps = api.nvim_buf_get_keymap(buf, 'n')
+    for _, keymap in pairs(keymaps) do
+      if keymap.lhs == "K" then
+        table.insert(keymap_restore, keymap)
+        api.nvim_buf_del_keymap(buf, 'n', 'K')
+      end
+    end
+  end
+  api.nvim_set_keymap(
+    'n', 'K', '<Cmd>lua require("dap.ui.widgets").hover()<CR>', { silent = true })
+end
+
+dap.listeners.after['event_terminated']['me'] = function()
+  for _, keymap in pairs(keymap_restore) do
+    api.nvim_buf_set_keymap(
+      keymap.buffer,
+      keymap.mode,
+      keymap.lhs,
+      keymap.rhs,
+      { silent = keymap.silent == 1 }
+    )
+  end
+  keymap_restore = {}
+end
+
+-- virtual text for debugging
+require('nvim-dap-virtual-text').setup()
+
+-- setup adapters
+dap.adapters.node2 = {
+  type = 'executable',
+  command = 'node',
+  args = {vim.fn.stdpath('data') .. '/mason/packages/node-debug2-adapter/out/src/nodeDebug.js'},
+}
+
+dap.configurations.javascript = {
+  {
+    name = 'Launch',
+    type = 'node2',
+    request = 'launch',
+    program = '${file}',
+    cwd = vim.fn.getcwd(),
+    sourceMaps = true,
+    protocol = 'inspector',
+    console = 'integratedTerminal',
+  },
+  {
+    -- For this to work you need to make sure the node process is started with the `--inspect` flag.
+    name = 'Attach to process',
+    type = 'node2',
+    request = 'attach',
+    processId = require'dap.utils'.pick_process,
+  },
+}

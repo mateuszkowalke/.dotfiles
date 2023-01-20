@@ -44,7 +44,7 @@ return require('packer').startup(function(use)
     use 'tpope/vim-fugitive'
     use 'terrortylor/nvim-comment'
     use { 'rcarriga/nvim-dap-ui', requires = { 'mfussenegger/nvim-dap' } }
-    use { 'mxsdev/nvim-dap-vscode-js', requires = { 'mfussenegger/nvim-dap' } }
+    use 'theHamsta/nvim-dap-virtual-text'
     use 'vimwiki/vimwiki'
     use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install",
         setup = function() vim.g.mkdp_filetypes = { "markdown" } vim.g.mkdp_browser = "/snap/bin/firefox" end, ft = { "markdown" }, })
