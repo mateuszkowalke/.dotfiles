@@ -14,8 +14,8 @@ local on_attach = function(_, _)
     -- this clashes with harpoon keymapping
     -- should be used only by some other plugin, so maybe no need for manual triggering
     -- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-    vim.keymap.set('n', '[d', vim.diagnostic.goto_next, bufopts)
-    vim.keymap.set('n', ']d', vim.diagnostic.goto_prev, bufopts)
+    vim.keymap.set('n', ']d', vim.diagnostic.goto_next, bufopts)
+    vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, bufopts)
     vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
     vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
     vim.keymap.set('n', '<space>wl', function()
@@ -46,6 +46,10 @@ lsp_config.sumneko_lua.setup {
             }
         }
     }
+}
+
+lsp_config.clangd.setup {
+    on_attach = on_attach
 }
 
 lsp_config.denols.setup {
