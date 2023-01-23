@@ -3,11 +3,11 @@ require('mason-lspconfig').setup({
     ensure_installed = { "sumneko_lua", "tsserver" }
 })
 
--- close quickfix menu after selecting choice
+-- close quickfix menu after selecting choice and center screen
 vim.api.nvim_create_autocmd(
   "FileType", {
   pattern={"qf"},
-  command=[[nnoremap <buffer> <CR> <CR>:cclose<CR>]]})
+  command=[[nnoremap <buffer> <CR> <CR>:cclose<CR>zz]]})
 
 local lsp_config = require('lspconfig')
 
