@@ -63,6 +63,10 @@ lsp_config.denols.setup {
     root_dir = lsp_config.util.root_pattern("deno.json", "deno.jsonc"),
 }
 
+lsp_config.jsonls.setup {
+    on_attach = on_attach,
+}
+
 lsp_config.tsserver.setup {
     on_attach = function(_, _)
         on_attach(_, _)
