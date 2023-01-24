@@ -47,7 +47,9 @@ return require('packer').startup(function(use)
     use 'theHamsta/nvim-dap-virtual-text'
     use 'vimwiki/vimwiki'
     use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install",
-        setup = function() vim.g.mkdp_filetypes = { "markdown" } vim.g.mkdp_browser = "/snap/bin/firefox" end, ft = { "markdown" }, })
+        setup = function() vim.g.mkdp_filetypes = { "markdown" }
+        vim.g.mkdp_browser = "/snap/bin/firefox"
+        end, ft = { "markdown" }, })
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins

@@ -91,3 +91,6 @@ dap.configurations.javascript = {
     processId = require'dap.utils'.pick_process,
   },
 }
+
+-- loads launch.json from default location (.vscode/launch.json)
+require('dap.ext.vscode').load_launchjs(nil, { node2 = {'javascript'} })
