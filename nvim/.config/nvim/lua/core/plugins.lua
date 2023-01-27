@@ -29,16 +29,27 @@ return require('packer').startup(function(use)
     use 'williamboman/mason.nvim'
     use 'williamboman/mason-lspconfig.nvim'
     use 'neovim/nvim-lspconfig'
+
+    -- Completion framework:
     use 'hrsh7th/nvim-cmp'
+
+    -- LSP completion source:
     use 'hrsh7th/cmp-nvim-lsp'
-    use 'L3MON4D3/LuaSnip'
-    use 'saadparwaiz1/cmp_luasnip'
-    use 'rafamadriz/friendly-snippets'
+
+    -- Useful completion sources:
+    use 'hrsh7th/cmp-nvim-lua'
+    use 'hrsh7th/cmp-nvim-lsp-signature-help'
+    use 'hrsh7th/cmp-vsnip'
+    use 'hrsh7th/cmp-path'
+    use 'hrsh7th/cmp-buffer'
+    use 'hrsh7th/vim-vsnip'
+
     use 'mhartington/formatter.nvim'
     use {
         'windwp/nvim-autopairs',
         config = function() require('nvim-autopairs').setup {} end
     }
+    use 'simrat39/rust-tools.nvim'
     use 'theprimeagen/harpoon'
     use 'mbbill/undotree'
     use 'tpope/vim-fugitive'
