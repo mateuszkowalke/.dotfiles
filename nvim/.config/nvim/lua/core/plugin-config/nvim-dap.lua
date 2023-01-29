@@ -96,5 +96,8 @@ for _, language in ipairs({ "typescript", "javascript" }) do
     }
 end
 
+-- TODO
+-- rust config
+
 -- loads launch.json from default location (.vscode/launch.json)
 require('dap.ext.vscode').load_launchjs(nil, { node2 = { 'javascript' } })

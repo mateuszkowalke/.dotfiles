@@ -12,7 +12,7 @@ vim.api.nvim_create_autocmd(
 
 local lsp_config = require('lspconfig')
 
-local on_attach = function(_, _)
+local on_attach = function(_, bufnr)
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
@@ -37,6 +37,15 @@ end
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
+-- setup for languages using default configuration
+local servers = {'clangd', 'jsonls', 'html'}
+for _, server in ipairs(servers) do
+  lsp_config[server].setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+  }
+end
+
 lsp_config.sumneko_lua.setup {
     on_attach = on_attach,
     capabilities = capabilities,
@@ -60,25 +69,20 @@ local rt = require("rust-tools")
 rt.setup({
     server = {
         on_attach = function(_, bufnr)
+            on_attach(_, bufnr)
             -- Hover actions
             vim.keymap.set("n", "<C-space>", rt.hover_actions.hover_actions, { buffer = bufnr })
             -- Code action groups
             vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
         end,
     },
+    capabilities = capabilities,
 })
-
-lsp_config.clangd.setup {
-    on_attach = on_attach
-}
 
 lsp_config.denols.setup {
     on_attach = on_attach,
+    capabilities = capabilities,
     root_dir = lsp_config.util.root_pattern("deno.json", "deno.jsonc"),
-}
-
-lsp_config.jsonls.setup {
-    on_attach = on_attach,
 }
 
 lsp_config.tsserver.setup {
@@ -87,6 +91,7 @@ lsp_config.tsserver.setup {
         vim.keymap.set('n', '<leader>f', ':Format<CR>')
         vim.keymap.set('n', '<leader>F', ':FormatWrite<CR>')
     end,
+    capabilities = capabilities,
     root_dir = lsp_config.util.root_pattern("package.json"),
 }
 
