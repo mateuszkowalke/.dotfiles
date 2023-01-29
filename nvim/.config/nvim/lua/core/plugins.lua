@@ -14,9 +14,12 @@ local packer_bootstrap = ensure_packer()
 return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
     use 'ellisonleao/gruvbox.nvim'
+
+    -- file explorer and status line
     use 'nvim-tree/nvim-tree.lua'
     use 'nvim-tree/nvim-web-devicons'
     use 'nvim-lualine/lualine.nvim'
+
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate'
@@ -37,23 +40,29 @@ return require('packer').startup(function(use)
     use 'hrsh7th/cmp-nvim-lsp'
 
     -- Useful completion sources:
-    use 'hrsh7th/cmp-nvim-lua'
     use 'hrsh7th/cmp-nvim-lsp-signature-help'
-    use 'hrsh7th/cmp-vsnip'
     use 'hrsh7th/cmp-path'
     use 'hrsh7th/cmp-buffer'
+    use 'hrsh7th/cmp-cmdline'
+    use 'hrsh7th/cmp-vsnip'
     use 'hrsh7th/vim-vsnip'
 
+    -- snippets
+    use 'rafamadriz/friendly-snippets'
+    use 'hrsh7th/vim-vsnip-integ'
+
+    -- editing
     use 'mhartington/formatter.nvim'
     use {
         'windwp/nvim-autopairs',
         config = function() require('nvim-autopairs').setup {} end
     }
+    use 'terrortylor/nvim-comment'
+
     use 'simrat39/rust-tools.nvim'
     use 'theprimeagen/harpoon'
     use 'mbbill/undotree'
     use 'tpope/vim-fugitive'
-    use 'terrortylor/nvim-comment'
     use { 'rcarriga/nvim-dap-ui', requires = { 'mfussenegger/nvim-dap' } }
     use 'theHamsta/nvim-dap-virtual-text'
     use { "mxsdev/nvim-dap-vscode-js", requires = { "mfussenegger/nvim-dap" } }

@@ -25,8 +25,6 @@ cmp.setup({
         ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_next_item()
-            elseif luasnip.expand_or_jumpable() then
-                luasnip.expand_or_jump()
             elseif has_words_before() then
                 cmp.complete()
             else
@@ -37,8 +35,6 @@ cmp.setup({
         ["<S-Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
                 cmp.select_prev_item()
-            elseif luasnip.jumpable(-1) then
-                luasnip.jump(-1)
             else
                 fallback()
             end
@@ -50,7 +46,8 @@ cmp.setup({
         { name = 'nvim_lsp_signature_help' }, -- display function signatures with current parameter emphasized
         { name = 'nvim_lua', keyword_length = 2 }, -- complete neovim's Lua runtime API such vim.lsp.*
         { name = 'buffer', keyword_length = 2 }, -- source current buffer
-        { name = 'vsnip', keyword_length = 2 }, -- nvim-cmp source for vim-vsnip
+        { name = 'vsnip', keyword_pattern = '\\%([^[:alnum:][:blank:]]\\|\\w\\+\\)',
+            keyword_length = 2 }, -- nvim-cmp source for vim-vsnip
         { name = 'calc' }, -- source for math calculation
     },
     window = {
