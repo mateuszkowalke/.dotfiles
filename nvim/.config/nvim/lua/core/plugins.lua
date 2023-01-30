@@ -69,7 +69,8 @@ return require('packer').startup(function(use)
     use {
         "microsoft/vscode-js-debug",
         opt = true,
-        run = "npm install --legacy-peer-deps && npm run compile"
+        run = "npm install --legacy-peer-deps && npm run compile",
+        tag = 'v1.74.1'
     }
     use 'vimwiki/vimwiki'
     use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install",
