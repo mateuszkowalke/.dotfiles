@@ -1,4 +1,4 @@
-# Config and after install scripts for pop os with neovim using CoC as main editor
+# Config and after install scripts for pop os with neovim as main editor
 
 ### Install
 
