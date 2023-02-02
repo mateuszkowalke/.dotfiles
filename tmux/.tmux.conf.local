@@ -1,9 +1,0 @@
-# copy mode vi keybindings
-setw -g mode-keys vi
-
-# copy-paste using xclip
-bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "xclip -i -sel clip > /dev/null"
-bind-key p run "xclip -o -sel clip | tmux load-buffer - ; tmux paste-buffer"
-
-# live config reload
-bind r source-file ~/.tmux.conf

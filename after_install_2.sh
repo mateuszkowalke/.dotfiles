@@ -8,6 +8,9 @@ rm ~/.zshrc
 cd ~/.dotfiles
 stow nvim tmux zsh i3 i3status alacritty
 
+# install tmux plugins
+~/.tmux/plugins/tpm/bin/install_plugins
+
 # install neovim plugins
 # error output needs to redirected as there are plenty errors
 # after running neovim's config without plugins installed
