@@ -65,17 +65,10 @@ return require('packer').startup(function(use)
     use 'tpope/vim-fugitive'
     use { 'rcarriga/nvim-dap-ui', requires = { 'mfussenegger/nvim-dap' } }
     use 'theHamsta/nvim-dap-virtual-text'
-    use { "mxsdev/nvim-dap-vscode-js", requires = { "mfussenegger/nvim-dap" } }
-    use {
-        "microsoft/vscode-js-debug",
-        opt = true,
-        run = "npm install --legacy-peer-deps && npm run compile",
-        tag = 'v1.74.1'
-    }
     use 'vimwiki/vimwiki'
     use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install",
         setup = function() vim.g.mkdp_filetypes = { "markdown" }
-            vim.g.mkdp_browser = "/snap/bin/firefox"
+        vim.g.mkdp_browser = "/snap/bin/firefox"
         end, ft = { "markdown" }, })
 
     -- Automatically set up your configuration after cloning packer.nvim

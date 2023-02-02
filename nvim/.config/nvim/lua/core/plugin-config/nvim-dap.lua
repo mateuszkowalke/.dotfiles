@@ -36,68 +36,64 @@ vim.keymap.set('n', '<leader>db', ":lua require'dap'.set_breakpoint(vim.fn.input
 local api = vim.api
 local keymap_restore = {}
 dap.listeners.after['event_initialized']['me'] = function()
-    for _, buf in pairs(api.nvim_list_bufs()) do
-        local keymaps = api.nvim_buf_get_keymap(buf, 'n')
-        for _, keymap in pairs(keymaps) do
-            if keymap.lhs == "K" then
-                table.insert(keymap_restore, keymap)
-                api.nvim_buf_del_keymap(buf, 'n', 'K')
-            end
-        end
+  for _, buf in pairs(api.nvim_list_bufs()) do
+    local keymaps = api.nvim_buf_get_keymap(buf, 'n')
+    for _, keymap in pairs(keymaps) do
+      if keymap.lhs == "K" then
+        table.insert(keymap_restore, keymap)
+        api.nvim_buf_del_keymap(buf, 'n', 'K')
+      end
     end
-    api.nvim_set_keymap(
-        'n', 'K', '<Cmd>lua require("dap.ui.widgets").hover()<CR>', { silent = true })
+  end
+  api.nvim_set_keymap(
+    'n', 'K', '<Cmd>lua require("dap.ui.widgets").hover()<CR>', { silent = true })
 end
 
 dap.listeners.after['event_terminated']['me'] = function()
-    for _, keymap in pairs(keymap_restore) do
-        api.nvim_buf_set_keymap(
-            keymap.buffer,
-            keymap.mode,
-            keymap.lhs,
-            keymap.rhs,
-            { silent = keymap.silent == 1 }
-        )
-    end
-    keymap_restore = {}
+  for _, keymap in pairs(keymap_restore) do
+    api.nvim_buf_set_keymap(
+      keymap.buffer,
+      keymap.mode,
+      keymap.lhs,
+      keymap.rhs,
+      { silent = keymap.silent == 1 }
+    )
+  end
+  keymap_restore = {}
 end
 
 -- virtual text for debugging
 require('nvim-dap-virtual-text').setup()
 
 -- setup adapters
-require("dap-vscode-js").setup({
-    -- node_path = "node", -- Path of node executable. Defaults to $NODE_PATH, and then "node"
-    -- debugger_path = vim.fn.stdpath('data') .. '/mason/packages/js-debug-adapter', -- Path to vscode-js-debug installation.
-    -- debugger_cmd = { "js-debug-adapter" }, -- Command to use to launch the debug server. Takes precedence over `node_path` and `debugger_path`.
-    adapters = { 'pwa-node', 'pwa-chrome', 'pwa-msedge', 'node-terminal', 'pwa-extensionHost' }, -- which adapters to register in nvim-dap
-    -- log_file_path = "(stdpath cache)/dap_vscode_js.log" -- Path for file logging
-    -- log_file_level = false -- Logging level for output to file. Set to false to disable file logging.
-    -- log_console_level = vim.log.levels.ERROR -- Logging level for output to console. Set to false to disable console output.
-})
+dap.adapters.node2 = {
+  type = 'executable',
+  command = 'node',
+  args = {vim.fn.stdpath('data') .. '/mason/packages/node-debug2-adapter/out/src/nodeDebug.js'},
+}
 
-for _, language in ipairs({ "typescript", "javascript" }) do
-    require("dap").configurations[language] = {
-        {
-            type = "pwa-node",
-            request = "launch",
-            name = "Launch file",
-            program = "${file}",
-            cwd = "${workspaceFolder}",
-            port = "3000"
-        },
-        {
-            type = "pwa-node",
-            request = "attach",
-            name = "Attach",
-            processId = require 'dap.utils'.pick_process,
-            cwd = "${workspaceFolder}",
-        }
-    }
-end
+dap.configurations.javascript = {
+  {
+    name = 'Launch',
+    type = 'node2',
+    request = 'launch',
+    program = '${file}',
+    cwd = vim.fn.getcwd(),
+    sourceMaps = true,
+    protocol = 'inspector',
+    console = 'integratedTerminal',
+  },
+  {
+    -- For this to work you need to make sure the node process is started with the `--inspect` flag.
+    name = 'Attach to process',
+    type = 'node2',
+    request = 'attach',
+    processId = require'dap.utils'.pick_process,
+  },
+}
 
 -- TODO
 -- rust config
 
 -- loads launch.json from default location (.vscode/launch.json)
-require('dap.ext.vscode').load_launchjs(nil, { node2 = { 'javascript' } })
+require('dap.ext.vscode').load_launchjs(nil, { node2 = {'javascript'} })
