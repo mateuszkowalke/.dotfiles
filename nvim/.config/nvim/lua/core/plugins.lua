@@ -14,6 +14,7 @@ local packer_bootstrap = ensure_packer()
 return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
     use 'ellisonleao/gruvbox.nvim'
+    use 'christoomey/vim-tmux-navigator'
 
     -- file explorer and status line
     use 'nvim-tree/nvim-tree.lua'
