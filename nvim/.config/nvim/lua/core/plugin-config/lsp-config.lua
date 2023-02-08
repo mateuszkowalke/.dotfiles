@@ -38,7 +38,7 @@ end
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- setup for languages using default configuration
-local servers = {'clangd', 'jsonls', 'html'}
+local servers = { 'gopls', 'clangd', 'jsonls', 'html'}
 for _, server in ipairs(servers) do
   lsp_config[server].setup {
     on_attach = on_attach,
@@ -64,6 +64,7 @@ lsp_config.sumneko_lua.setup {
     }
 }
 
+-- rust setup
 local rt = require("rust-tools")
 
 rt.setup({
@@ -79,6 +80,7 @@ rt.setup({
     capabilities = capabilities,
 })
 
+-- typescript/javascript setup
 lsp_config.denols.setup {
     on_attach = on_attach,
     capabilities = capabilities,
@@ -122,7 +124,6 @@ require("formatter").setup(
         }
     }
 )
-
 
 -- borders for floating windows
 -- TODO refactor to separate file?
