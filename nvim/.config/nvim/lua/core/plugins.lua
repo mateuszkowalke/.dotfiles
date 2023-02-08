@@ -60,7 +60,9 @@ return require('packer').startup(function(use)
     }
     use 'terrortylor/nvim-comment'
 
+    -- rust plugins
     use 'simrat39/rust-tools.nvim'
+
     use 'theprimeagen/harpoon'
     use 'mbbill/undotree'
     use 'tpope/vim-fugitive'
@@ -69,7 +71,7 @@ return require('packer').startup(function(use)
     use 'vimwiki/vimwiki'
     use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install",
         setup = function() vim.g.mkdp_filetypes = { "markdown" }
-        vim.g.mkdp_browser = "/snap/bin/firefox"
+            vim.g.mkdp_browser = "/snap/bin/firefox"
         end, ft = { "markdown" }, })
 
     -- Automatically set up your configuration after cloning packer.nvim
