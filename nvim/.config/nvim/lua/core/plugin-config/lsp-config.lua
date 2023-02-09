@@ -38,7 +38,7 @@ end
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- setup for languages using default configuration
-local servers = { 'gopls', 'clangd', 'jsonls', 'html'}
+local servers = { 'gopls', 'clangd', 'html'}
 for _, server in ipairs(servers) do
   lsp_config[server].setup {
     on_attach = on_attach,
@@ -95,6 +95,15 @@ lsp_config.tsserver.setup {
     end,
     capabilities = capabilities,
     root_dir = lsp_config.util.root_pattern("package.json"),
+}
+
+lsp_config.jsonls.setup {
+    on_attach = function(_, bufnr)
+        on_attach(_, bufnr)
+        vim.keymap.set('n', '<space>f', ':Format<CR>', { buffer = bufnr })
+        vim.keymap.set('n', '<space>F', ':FormatWrite<CR>', { buffer = bufnr })
+    end,
+    capabilities = capabilities,
 }
 
 lsp_config['eslint'].setup({})
