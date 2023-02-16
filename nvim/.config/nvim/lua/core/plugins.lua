@@ -66,7 +66,7 @@ return require('packer').startup(function(use)
     use 'theprimeagen/harpoon'
     use 'mbbill/undotree'
     use 'tpope/vim-fugitive'
-    use { 'rcarriga/nvim-dap-ui', requires = { 'mfussenegger/nvim-dap' } }
+    use { 'rcarriga/nvim-dap-ui', tag = 'v3.4.0', requires = { 'mfussenegger/nvim-dap' } }
     use 'theHamsta/nvim-dap-virtual-text'
     use 'vimwiki/vimwiki'
     use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install",

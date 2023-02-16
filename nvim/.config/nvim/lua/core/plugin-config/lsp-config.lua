@@ -1,6 +1,8 @@
 require('mason').setup()
+-- TODO
+-- complete the ensure_installed list
 require('mason-lspconfig').setup({
-    ensure_installed = { "sumneko_lua", "tsserver" }
+    ensure_installed = { "tsserver" }
 })
 
 -- close quickfix menu after selecting choice and center screen
@@ -18,9 +20,7 @@ local on_attach = function(_, bufnr)
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
     vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-    -- this clashes with harpoon keymapping
-    -- should be used only by some other plugin, so maybe no need for manual triggering
-    -- vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+    vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
     vim.keymap.set('n', ']d', vim.diagnostic.goto_next, bufopts)
     vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, bufopts)
     vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
@@ -46,7 +46,7 @@ for _, server in ipairs(servers) do
   }
 end
 
-lsp_config.sumneko_lua.setup {
+lsp_config.lua_ls.setup {
     on_attach = on_attach,
     capabilities = capabilities,
     settings = {
