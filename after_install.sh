@@ -13,11 +13,11 @@ sudo sh -c 'echo "deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_
 sudo apt update
 sudo apt install -y apt-transport-https build-essential zsh i3-wm i3status dmenu \
     stow fzf pip tmux lm-sensors brave-browser pgadmin4 ripgrep \
-    maim xclip xsel wl-clipboard feh compton jq
+    maim xclip xsel feh compton jq
 
 # install pyenv's dependencies
 sudo apt-get install git python-pip make build-essential libssl-dev zlib1g-dev \
-    libbz2-dev libreadline-dev libsqlite3-dev curl python3-pip libffi-dev
+    libbz2-dev libreadline-dev libsqlite3-dev curl wget python3-pip libffi-dev
     
 pip3 install virtualenvwrapper
 

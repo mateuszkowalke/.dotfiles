@@ -2,7 +2,7 @@
 
 ### Install
 
-After installing fresh pop os, first run:
+After installing fresh pop os or ubuntu, first run:
 
 ```sh
 sudo apt update && sudo apt upgrade -y
@@ -11,6 +11,8 @@ sudo apt update && sudo apt upgrade -y
 Then run after_install scripts in order and provide required input when prompted.
 
 Remember to set appropriate font in your terminal emulator.
+
+For ubuntu you might want to install shell extensions and pop os shell (note: use jammy_master branch).
 
 ### Tmux
 
