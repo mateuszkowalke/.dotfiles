@@ -38,7 +38,7 @@ end
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 -- setup for languages using default configuration
-local servers = { 'gopls', 'clangd', 'html'}
+local servers = { 'gopls', 'clangd', 'html', 'cssls' }
 for _, server in ipairs(servers) do
   lsp_config[server].setup {
     on_attach = on_attach,
