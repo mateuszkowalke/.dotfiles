@@ -31,3 +31,9 @@ The sessions are also automatically saved every 15 mins.
 
 To rename windows use `prefix + ,`.
 To rename sessions use `prefix + $`.
+
+### App list (not exactly development related):
+
+ - brave: used as default browser
+ - liferea: rss and podcast viewer
+ - tootle: mastodon client
