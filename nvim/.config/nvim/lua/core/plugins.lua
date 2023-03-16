@@ -63,6 +63,7 @@ return require('packer').startup(function(use)
     -- rust plugins
     use 'simrat39/rust-tools.nvim'
 
+    -- misc
     use 'theprimeagen/harpoon'
     use 'mbbill/undotree'
     use 'tpope/vim-fugitive'

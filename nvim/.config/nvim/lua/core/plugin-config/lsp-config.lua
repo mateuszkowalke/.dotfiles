@@ -40,10 +40,10 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 -- setup for languages using default configuration
 local servers = { 'gopls', 'clangd', 'html', 'cssls' }
 for _, server in ipairs(servers) do
-  lsp_config[server].setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-  }
+    lsp_config[server].setup {
+        on_attach = on_attach,
+        capabilities = capabilities,
+    }
 end
 
 lsp_config.lua_ls.setup {
@@ -106,6 +106,7 @@ lsp_config.jsonls.setup {
     capabilities = capabilities,
 }
 
+-- setup linters and formatters
 lsp_config['eslint'].setup({})
 
 require("formatter").setup(
@@ -141,13 +142,13 @@ vim.cmd [[autocmd! ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335
 
 local border = {
     { "🭽", "FloatBorder" },
-    { "▔", "FloatBorder" },
+    { "▔",  "FloatBorder" },
     { "🭾", "FloatBorder" },
-    { "▕", "FloatBorder" },
+    { "▕",  "FloatBorder" },
     { "🭿", "FloatBorder" },
-    { "▁", "FloatBorder" },
+    { "▁",  "FloatBorder" },
     { "🭼", "FloatBorder" },
-    { "▏", "FloatBorder" },
+    { "▏",  "FloatBorder" },
 }
 
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
