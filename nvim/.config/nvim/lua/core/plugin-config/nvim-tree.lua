@@ -13,9 +13,3 @@ require('nvim-tree').setup({
 })
 
 vim.keymap.set('n', '<c-n>', ':NvimTreeFindFileToggle<CR>')
-
--- always open nvim_tree on startup using autocmd
-local function open_nvim_tree()
-  require("nvim-tree.api").tree.open()
-end
-vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
