@@ -9,7 +9,7 @@ sudo curl https://www.pgadmin.org/static/packages_pgadmin_org.pub | sudo apt-key
 sudo sh -c 'echo "deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_release -cs) pgadmin4 main" > /etc/apt/sources.list.d/pgadmin4.list && apt update'
 
 # update and install necessary packages
-# ripgrep is needed for nvim telescope to work properly
+# ripgrep is needed for nvim telescope to work properly and used as nvim's grepprg
 sudo apt update
 sudo apt install -y apt-transport-https build-essential zsh i3-wm i3status dmenu \
     stow fzf pip tmux lm-sensors brave-browser liferea pgadmin4 ripgrep \
@@ -37,6 +37,9 @@ sh ./git_aliases.sh
 
 # tmux plugin manager install
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
+# tmuxifier install
+git clone https://github.com/jimeh/tmuxifier.git ~/.tmuxifier
 
 # clone notes
 git clone git@github.com:mateuszkowalke/notes.git ~/Notes

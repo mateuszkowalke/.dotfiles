@@ -96,6 +96,10 @@ bindkey "^[[B" history-substring-search-down
 # restores some bash shortcuts
 bindkey -e
 
+# tmuxifier setup
+export PATH="$HOME/.tmuxifier/bin:$PATH"
+eval "$(tmuxifier init -)"
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # nvm configuration

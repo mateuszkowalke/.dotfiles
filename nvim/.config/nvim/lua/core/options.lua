@@ -33,3 +33,6 @@ vim.opt.colorcolumn = '80'
 
 vim.opt.exrc = true
 vim.opt.secure = true
+
+vim.opt.grepprg = 'rg --vimgrep --no-heading --smart-case --hidden'
+vim.opt.grepformat = '%f:%l:%c:%m'
