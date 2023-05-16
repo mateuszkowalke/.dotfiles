@@ -21,34 +21,20 @@ cmp.setup({
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.abort(),
-        ['<CR>'] = cmp.mapping.confirm({ select = false }),
-        ["<Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_next_item()
-            elseif has_words_before() then
-                cmp.complete()
-            else
-                fallback()
-            end
-        end, { "i", "s" }),
-
-        ["<S-Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-                cmp.select_prev_item()
-            else
-                fallback()
-            end
-        end, { "i", "s" }),
+        ['<CR>'] = cmp.mapping.confirm({
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = false
+        }),
     }),
     sources = {
         { name = 'path' }, -- file paths
         { name = 'nvim_lsp' }, -- from language server
-        { name = 'nvim_lsp_signature_help' }, -- display function signatures with current parameter emphasized
         { name = 'nvim_lua', keyword_length = 2 }, -- complete neovim's Lua runtime API such vim.lsp.*
         { name = 'buffer', keyword_length = 2 }, -- source current buffer
         { name = 'vsnip', keyword_pattern = '\\%([^[:alnum:][:blank:]]\\|\\w\\+\\)',
             keyword_length = 2 }, -- nvim-cmp source for vim-vsnip
         { name = 'calc' }, -- source for math calculation
+        { name = 'nvim_lsp_signature_help' }, -- display function signatures with current parameter emphasized
     },
     window = {
         completion = cmp.config.window.bordered(),
@@ -67,6 +53,7 @@ cmp.setup({
             return item
         end,
     },
+    preselect = cmp.PreselectMode.None,
 })
 
 -- adds '(' after selecting function of method in autocompletion

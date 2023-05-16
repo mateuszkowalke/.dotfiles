@@ -21,18 +21,26 @@ return require('packer').startup(function(use)
     use 'nvim-tree/nvim-web-devicons'
     use 'nvim-lualine/lualine.nvim'
 
+    -- treesitter
     use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate'
     }
+
+    -- telescope
     use {
         'nvim-telescope/telescope.nvim',
         tag = '0.1.0',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
+
+    -- lsp
     use 'williamboman/mason.nvim'
     use 'williamboman/mason-lspconfig.nvim'
     use 'neovim/nvim-lspconfig'
+
+    -- copilot
+    use "github/copilot.vim"
 
     -- Completion framework:
     use 'hrsh7th/nvim-cmp'
@@ -62,6 +70,7 @@ return require('packer').startup(function(use)
 
     -- rust plugins
     use 'simrat39/rust-tools.nvim'
+
 
     -- misc
     use 'theprimeagen/harpoon'
