@@ -13,8 +13,12 @@ sudo sh -c 'echo "deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_
 sudo apt update
 sudo apt install -y apt-transport-https build-essential zsh i3-wm i3status dmenu \
     stow fzf pip tmux lm-sensors brave-browser liferea pgadmin4 ripgrep \
-    maim xclip xsel feh compton jq
+    maim xclip xsel feh compton jq wireshark nmap
 
+# add user to wireshark group, so that it doesn't need to be run as root
+sudo usermod -a -G wireshark $USER
+
+# mastodon client
 sudo flatpak install tootle
 
 # install pyenv's dependencies
