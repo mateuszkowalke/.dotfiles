@@ -42,53 +42,80 @@ require('nvim-dap-virtual-text').setup()
 
 -- setup adapters
 dap.adapters.node2 = {
-  type = 'executable',
-  command = 'node',
-  args = {vim.fn.stdpath('data') .. '/mason/packages/node-debug2-adapter/out/src/nodeDebug.js'},
+    type = 'executable',
+    command = 'node',
+    args = { vim.fn.stdpath('data') .. '/mason/packages/node-debug2-adapter/out/src/nodeDebug.js' },
 }
 
+local mason_registry = require("mason-registry")
+local codelldb = mason_registry.get_package("codelldb")
+local codelldb_path = codelldb:get_install_path() .. "/extension/adapter/codelldb"
+
+dap.adapters.codelldb = {
+  type = 'server',
+  port = "${port}",
+  executable = {
+    command = codelldb_path,
+    args = {"--port", "${port}"},
+  }
+}
+
+-- configurations
 dap.configurations.javascript = {
-  {
-    name = 'Launch',
-    type = 'node2',
-    request = 'launch',
-    program = '${file}',
-    cwd = vim.fn.getcwd(),
-    sourceMaps = true,
-    protocol = 'inspector',
-    console = 'integratedTerminal',
-  },
-  {
-    -- For this to work you need to make sure the node process is started with the `--inspect` flag.
-    name = 'Attach to process',
-    type = 'node2',
-    request = 'attach',
-    processId = require'dap.utils'.pick_process,
-  },
+    {
+        name = 'Launch',
+        type = 'node2',
+        request = 'launch',
+        program = '${file}',
+        cwd = vim.fn.getcwd(),
+        sourceMaps = true,
+        protocol = 'inspector',
+        console = 'integratedTerminal',
+    },
+    {
+        -- For this to work you need to make sure the node process is started with the `--inspect` flag.
+        name = 'Attach to process',
+        type = 'node2',
+        request = 'attach',
+        processId = require 'dap.utils'.pick_process,
+    },
 }
 
 dap.configurations.typescript = {
-  {
-    name = 'Launch',
-    type = 'node2',
-    request = 'launch',
-    program = '${file}',
-    cwd = vim.fn.getcwd(),
-    sourceMaps = true,
-    protocol = 'inspector',
-    console = 'integratedTerminal',
-  },
-  {
-    -- For this to work you need to make sure the node process is started with the `--inspect` flag.
-    name = 'Attach to process',
-    type = 'node2',
-    request = 'attach',
-    processId = require'dap.utils'.pick_process,
-  },
+    {
+        name = 'Launch',
+        type = 'node2',
+        request = 'launch',
+        program = '${file}',
+        cwd = vim.fn.getcwd(),
+        sourceMaps = true,
+        protocol = 'inspector',
+        console = 'integratedTerminal',
+    },
+    {
+        -- For this to work you need to make sure the node process is started with the `--inspect` flag.
+        name = 'Attach to process',
+        type = 'node2',
+        request = 'attach',
+        processId = require 'dap.utils'.pick_process,
+    },
 }
 
--- TODO
--- rust config
+-- c/c++/rust config
+dap.configurations.c = {
+  {
+    name = "Launch file",
+    type = "codelldb",
+    request = "launch",
+    program = function()
+      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+    end,
+    cwd = '${workspaceFolder}',
+    stopOnEntry = false,
+  },
+}
+dap.configurations.cpp = dap.configurations.c
+dap.configurations.rust = dap.configurations.c
 
 -- loads launch.json from default location (.vscode/launch.json)
-require('dap.ext.vscode').load_launchjs(nil, { node2 = {'javascript'} })
+require('dap.ext.vscode').load_launchjs(nil, { node2 = { 'javascript' } })
