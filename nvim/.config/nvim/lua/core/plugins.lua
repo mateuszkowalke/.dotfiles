@@ -38,6 +38,20 @@ return require('packer').startup(function(use)
     use 'williamboman/mason.nvim'
     use 'williamboman/mason-lspconfig.nvim'
     use 'neovim/nvim-lspconfig'
+    use({
+        "glepnir/lspsaga.nvim",
+        opt = true,
+        branch = "main",
+        event = "LspAttach",
+        config = function()
+            require("lspsaga").setup()
+        end,
+        requires = {
+            { "nvim-tree/nvim-web-devicons" },
+            --Please make sure you install markdown and markdown_inline parser
+            { "nvim-treesitter/nvim-treesitter" }
+        }
+    })
 
     -- copilot
     use "github/copilot.vim"
@@ -67,22 +81,34 @@ return require('packer').startup(function(use)
         config = function() require('nvim-autopairs').setup {} end
     }
     use 'terrortylor/nvim-comment'
+    use 'theprimeagen/harpoon'
+    use 'mbbill/undotree'
 
     -- rust plugins
     use 'simrat39/rust-tools.nvim'
 
-
     -- misc
     use 'theprimeagen/harpoon'
     use 'mbbill/undotree'
+
+    -- git
     use 'tpope/vim-fugitive'
+
+    -- debugging
     use { 'rcarriga/nvim-dap-ui', tag = 'v3.4.0', requires = { 'mfussenegger/nvim-dap' } }
     use 'theHamsta/nvim-dap-virtual-text'
+
+    -- notetaking
     use 'vimwiki/vimwiki'
-    use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install",
-        setup = function() vim.g.mkdp_filetypes = { "markdown" }
-            vim.g.mkdp_browser = "/snap/bin/firefox"
-        end, ft = { "markdown" }, })
+    use({
+        "iamcco/markdown-preview.nvim",
+        run = "cd app && npm install",
+        setup = function()
+            vim.g.mkdp_filetypes = { "markdown" }
+            vim.g.mkdp_browser = "/usr/bin/firefox"
+        end,
+        ft = { "markdown" },
+    })
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
