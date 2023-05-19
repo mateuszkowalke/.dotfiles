@@ -81,8 +81,6 @@ return require('packer').startup(function(use)
         config = function() require('nvim-autopairs').setup {} end
     }
     use 'terrortylor/nvim-comment'
-    use 'theprimeagen/harpoon'
-    use 'mbbill/undotree'
 
     -- rust plugins
     use 'simrat39/rust-tools.nvim'
