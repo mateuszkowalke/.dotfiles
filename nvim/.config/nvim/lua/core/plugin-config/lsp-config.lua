@@ -41,6 +41,7 @@ local on_attach = function(_, bufnr)
 end
 
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
+capabilities.offsetEncoding = 'utf-16'
 
 -- setup for languages using default configuration
 local servers = { 'gopls', 'clangd', 'docker_compose_language_service', 'html', 'cssls', 'angularls' }
