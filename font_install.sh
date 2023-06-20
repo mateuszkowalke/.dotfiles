@@ -2,9 +2,7 @@
 
 # installs hack nerd font and patches it
 
-sudo add-apt-repository ppa:fontforge/fontforge
-sudo apt update
-sudo apt install fontforge
+sudo apt-get -y install fontforge
 
 git clone --depth 1 https://github.com/ryanoasis/nerd-fonts.git
 cp nerd-fonts/src/glyphs/codicons/codicon.ttf nerd-fonts/src/glyphs

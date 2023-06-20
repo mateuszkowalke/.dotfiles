@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # make sure curl is installed
-sudo apt install curl
+sudo apt-get -y install curl
 
 # add brave's repo
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
@@ -9,18 +9,18 @@ echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=
 
 # add pgAdmin repo
 sudo curl https://www.pgadmin.org/static/packages_pgadmin_org.pub | sudo apt-key add
-sudo sh -c 'echo "deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_release -cs) pgadmin4 main" > /etc/apt/sources.list.d/pgadmin4.list && apt update'
+sudo sh -c 'echo "deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_release -cs) pgadmin4 main" > /etc/apt/sources.list.d/pgadmin4.list && apt-get update'
 
 # update and install necessary packages
 # ripgrep is needed for nvim telescope to work properly and used as nvim's grepprg
-sudo apt update
-sudo apt install -y apt-transport-https build-essential zsh i3-wm i3status dmenu \
+sudo apt-get update
+sudo apt-get -y install apt-transport-https build-essential zsh i3-wm i3status dmenu \
     git make libssl-dev curl wget neovim python3-neovim \
     stow fzf pip tmux lm-sensors brave-browser liferea pgadmin4 ripgrep \
     maim xclip xsel feh compton jq wireshark nmap gnome-clocks solaar
 
 # alacritty's dependencies
-sudo apt install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev
+sudo apt-get -y install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev
 
 # add user to wireshark group, so that it doesn't need to be run as root
 sudo usermod -a -G wireshark $USER
@@ -49,8 +49,8 @@ git clone git@github.com:mateuszkowalke/notes.git ~/Notes
 # create a directory for projects
 mkdir -p ~/Projects
 
-# install ohmyzsh
-sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-
 # install docker
 sh ./docker_install.sh
+
+# install ohmyzsh
+sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"

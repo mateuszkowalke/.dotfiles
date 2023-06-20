@@ -14,7 +14,7 @@ For setting up keys utilise `ssh_init.sh` script - this creates keys automatical
 Then run after_install scripts in order and provide required input when prompted.
 Important: allow non-root users for wireshark to capture packets.
 
-Remember to set appropriate font in your terminal emulator.
+Remember to set appropriate font in your terminal emulator, although for i3/alacritty combinations it's already configured.
 
 For ubuntu you might want to install shell extensions and pop os shell (note: use jammy_master branch).
 
