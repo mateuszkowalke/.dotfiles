@@ -23,7 +23,7 @@ sudo apt-get -y install apt-transport-https build-essential zsh i3-wm i3status d
 sudo apt-get -y install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev
 
 # add user to wireshark group, so that it doesn't need to be run as root
-sudo usermod -a -G wireshark $USER
+sudo usermod -aG wireshark $USER
 
 # git aliases
 sh ./git_aliases.sh
@@ -54,3 +54,5 @@ sh ./docker_install.sh
 
 # install ohmyzsh
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+printf "\n\n	You need to login again\n\n"

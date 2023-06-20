@@ -11,8 +11,8 @@ sudo apt update && sudo apt upgrade -y
 Preferred method for proceeding is to install git and clone this repo (best to setup ssh keys first - otherwise notes won't be copied).
 For setting up keys utilise `ssh_init.sh` script - this creates keys automatically managed by ssh-agent.
 
-Then run after_install scripts in order and provide required input when prompted.
-Important: allow non-root users for wireshark to capture packets.
+Then run after_install scripts in order, provide required input when prompted and relogin after each step (on VMs it might be required to restart the machine between each step).
+Important: allow non-root users for wireshark to capture packets upon installation - if you forget to do this run `sudo dpkg-reconfigure wireshark-common` to reconfigure it after installation is complete.
 
 Remember to set appropriate font in your terminal emulator, although for i3/alacritty combinations it's already configured.
 
