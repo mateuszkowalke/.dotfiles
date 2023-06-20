@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# make sure curl is installed
+sudo apt install curl
+
 # add brave's repo
 sudo curl -fsSLo /usr/share/keyrings/brave-browser-archive-keyring.gpg https://brave-browser-apt-release.s3.brave.com/brave-browser-archive-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=amd64] https://brave-browser-apt-release.s3.brave.com/ stable main"|sudo tee /etc/apt/sources.list.d/brave-browser-release.list
@@ -10,10 +13,9 @@ sudo sh -c 'echo "deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_
 
 # update and install necessary packages
 # ripgrep is needed for nvim telescope to work properly and used as nvim's grepprg
-# solaar is a management utility for LG peripherals
 sudo apt update
 sudo apt install -y apt-transport-https build-essential zsh i3-wm i3status dmenu \
-    git make libssl-dev  curl wget \
+    git make libssl-dev curl wget neovim python3-neovim \
     stow fzf pip tmux lm-sensors brave-browser liferea pgadmin4 ripgrep \
     maim xclip xsel feh compton jq wireshark nmap gnome-clocks solaar
 
@@ -28,9 +30,6 @@ sh ./git_aliases.sh
 
 # workspaces mod
 ./gnome_workspaces_mod.sh
-
-# install neovim
-./nvim_install.sh
 
 # clone asdf repo - rest of configurations provided by oh-my-zsh plugin
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf

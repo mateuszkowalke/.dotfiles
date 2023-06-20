@@ -9,6 +9,8 @@ sudo apt update && sudo apt upgrade -y
 ```
 
 Then run after_install scripts in order and provide required input when prompted.
+Important: allow non-root users for wireshark to capture packets.
+Preferred method to do it is to install git and clone the repo (best to setup ssh keys first).
 
 Remember to set appropriate font in your terminal emulator.
 
@@ -36,4 +38,5 @@ To rename sessions use `prefix + $`.
 
  - brave: used as default browser
  - liferea: rss and podcast viewer
- - tootle: mastodon client
+ - gnome-clocks: for alarms
+ - solaar: for logitech peripherals
