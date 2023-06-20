@@ -8,13 +8,19 @@ After installing fresh pop os or ubuntu, first run:
 sudo apt update && sudo apt upgrade -y
 ```
 
+Preferred method for proceeding is to install git and clone this repo (best to setup ssh keys first - otherwise notes won't be copied).
+For setting up keys utilise `ssh_init.sh` script - this creates keys automatically managed by ssh-agent.
+
 Then run after_install scripts in order and provide required input when prompted.
 Important: allow non-root users for wireshark to capture packets.
-Preferred method to do it is to install git and clone the repo (best to setup ssh keys first).
 
 Remember to set appropriate font in your terminal emulator.
 
 For ubuntu you might want to install shell extensions and pop os shell (note: use jammy_master branch).
+
+### Alacritty
+
+Alacritty is build from source for now. It's set as default terminal emulator for i3.
 
 ### Tmux
 

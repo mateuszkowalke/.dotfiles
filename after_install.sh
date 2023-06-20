@@ -19,6 +19,9 @@ sudo apt install -y apt-transport-https build-essential zsh i3-wm i3status dmenu
     stow fzf pip tmux lm-sensors brave-browser liferea pgadmin4 ripgrep \
     maim xclip xsel feh compton jq wireshark nmap gnome-clocks solaar
 
+# alacritty's dependencies
+sudo apt install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev
+
 # add user to wireshark group, so that it doesn't need to be run as root
 sudo usermod -a -G wireshark $USER
 

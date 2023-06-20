@@ -13,8 +13,8 @@ stow nvim tmux zsh i3 i3status alacritty
 
 # add core asdf plugins
 asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
-asdf plugin-add python https://github.com/asdf-community/asdf-python.git
-asdf plugin-add rust https://github.com/asdf-community/asdf-rust.git
+asdf plugin add python https://github.com/asdf-community/asdf-python.git
+asdf plugin add rust https://github.com/asdf-community/asdf-rust.git
 
 asdf install nodejs latest
 asdf global nodejs latest
