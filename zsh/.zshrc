@@ -102,10 +102,8 @@ eval "$(tmuxifier init -)"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
-# nvm configuration
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# rust configuration
+export PATH=$PATH:$HOME/.cargo/bin
 
 # go configuration
 export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
