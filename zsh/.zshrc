@@ -102,9 +102,6 @@ eval "$(tmuxifier init -)"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
-# rust configuration
-export PATH=$PATH:$HOME/.cargo/bin
-
 # go configuration
 export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
 
