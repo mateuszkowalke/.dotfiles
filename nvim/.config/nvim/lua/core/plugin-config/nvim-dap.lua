@@ -47,17 +47,23 @@ dap.adapters.node2 = {
     args = { vim.fn.stdpath('data') .. '/mason/packages/node-debug2-adapter/out/src/nodeDebug.js' },
 }
 
+dap.adapters.chrome = {
+    type = "executable",
+    command = "node",
+    args = { vim.fn.stdpath('data') .. '/mason/packages/chrome-debug-adapter/out/src/chromeDebug.js' }
+}
+
 local mason_registry = require("mason-registry")
 local codelldb = mason_registry.get_package("codelldb")
 local codelldb_path = codelldb:get_install_path() .. "/extension/adapter/codelldb"
 
 dap.adapters.codelldb = {
-  type = 'server',
-  port = "${port}",
-  executable = {
-    command = codelldb_path,
-    args = {"--port", "${port}"},
-  }
+    type = 'server',
+    port = "${port}",
+    executable = {
+        command = codelldb_path,
+        args = { "--port", "${port}" },
+    }
 }
 
 -- configurations
@@ -99,20 +105,32 @@ dap.configurations.typescript = {
         request = 'attach',
         processId = require 'dap.utils'.pick_process,
     },
+    -- For this to work install google-chrome-stable and run it with the --remote-debugging-port=9222 flag
+    {
+        name = "Launch Chrome",
+        type = "chrome",
+        request = "attach",
+        program = "${file}",
+        cwd = vim.fn.getcwd(),
+        sourceMaps = true,
+        protocol = "inspector",
+        port = 9222,
+        webRoot = "${workspaceFolder}"
+    }
 }
 
 -- c/c++/rust config
 dap.configurations.c = {
-  {
-    name = "Launch file",
-    type = "codelldb",
-    request = "launch",
-    program = function()
-      return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
-    end,
-    cwd = '${workspaceFolder}',
-    stopOnEntry = false,
-  },
+    {
+        name = "Launch file",
+        type = "codelldb",
+        request = "launch",
+        program = function()
+            return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+        end,
+        cwd = '${workspaceFolder}',
+        stopOnEntry = false,
+    },
 }
 dap.configurations.cpp = dap.configurations.c
 dap.configurations.rust = dap.configurations.c
