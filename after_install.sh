@@ -17,9 +17,12 @@ sudo sh -c 'echo "deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_
 # ripgrep is needed for nvim telescope to work properly and used as nvim's grepprg
 sudo apt-get update
 sudo apt-get -y install apt-transport-https build-essential zsh i3-wm i3status dmenu \
-    git make libssl-dev curl wget neovim python3-neovim \
+    git make libssl-dev curl wget \
     stow fzf pip tmux lm-sensors brave-browser liferea pgadmin4 ripgrep \
     maim xclip xsel feh compton jq wireshark nmap gnome-clocks solaar
+
+# install nvim
+./nvim_install.sh
 
 # alacritty's dependencies
 sudo apt-get -y install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev
