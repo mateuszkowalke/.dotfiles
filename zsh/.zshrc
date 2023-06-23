@@ -106,7 +106,12 @@ eval "$(tmuxifier init -)"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # go configuration
+# /usr/local/go/bin path is go tools install path
+# while $HOME/go/bin is for tools installed using go install
 export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
+
+# rust configuration
+export PATH=$PATH:$HOME/.cargo/bin
 
 # deno configuration
 export DENO_INSTALL="$HOME/.deno"

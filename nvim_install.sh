@@ -13,5 +13,6 @@ then
     exit 1
 fi
 
-mv nvim.appimage ~/Applications
-rm -rf nvim.appimage
+mv nvim.appimage ~/Applications/nvim
+chmod +x ~/Applications/nvim
+rm -rf nvim.appimage*

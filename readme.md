@@ -51,3 +51,20 @@ To rename sessions use `prefix + $`.
  - liferea: rss and podcast viewer
  - gnome-clocks: for alarms
  - solaar: for logitech peripherals
+
+### AppImage apps don't work - "AppImages require FUSE to run" error
+
+Install the required packages:
+
+`sudo apt-get install fuse libfuse2`
+
+Now, FUSE should be working. On some older distributions, you will have to run some additional configuration steps:
+
+Make sure the FUSE kernel module is loaded:
+
+`sudo modprobe -v fuse`
+
+Then, add the required group (should be created by the install command, if this is the case, this call will fail), and add your own user account to this group:
+
+`sudo addgroup fuse`
+`sudo adduser $USER fuse`

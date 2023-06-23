@@ -18,11 +18,14 @@ sudo sh -c 'echo "deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_
 
 # update and install necessary packages
 # ripgrep is needed for nvim telescope to work properly and used as nvim's grepprg
+# fuse and libfuse2 are needed to support AppImages
 sudo apt-get update
 sudo apt-get -y install apt-transport-https build-essential zsh i3-wm i3status dmenu \
     git make libssl-dev curl wget \
     stow fzf pip tmux lm-sensors brave-browser liferea pgadmin4 ripgrep \
-    maim xclip xsel feh compton jq wireshark nmap gnome-clocks solaar
+    maim xclip xsel feh compton jq wireshark nmap gnome-clocks solaar \
+    fuse libfuse2
+
 
 # install nvim
 ./nvim_install.sh

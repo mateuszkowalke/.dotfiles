@@ -14,7 +14,9 @@ asdf global python latest
 # install rust
 # this has to be done outside of asdf - can't install stuff if rust installed via asdf
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-source "$HOME/.cargo/env"
+
+# need to put .cargo/bin to the path for alacritty installation
+export PATH="$HOME/.cargo/bin:$PATH"
 
 # install alacritty - depends on rust already being on the system
 cargo install alacritty
