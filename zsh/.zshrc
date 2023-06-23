@@ -96,6 +96,9 @@ bindkey "^[[B" history-substring-search-down
 # restores some bash shortcuts
 bindkey -e
 
+# add appimage folder to path
+export PATH="$HOME/Applications:$PATH"
+
 # tmuxifier setup
 export PATH="$HOME/.tmuxifier/bin:$PATH"
 eval "$(tmuxifier init -)"

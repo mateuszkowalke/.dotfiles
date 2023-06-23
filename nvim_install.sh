@@ -1,15 +1,17 @@
 #!/bin/bash
 
-wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.deb
-wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.deb.sha256sum
-sha256sum nvim-linux64.deb
+set -e
 
-if ($(sha256sum -c nvim-linux64.deb.sha256sum) != "nvim-linux64.deb: OK")
+wget https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
+wget https://github.com/neovim/neovim/releases/download/stable/nvim.appimage.sha256sum
+sha256sum nvim.appimage
+
+if [[ "$(sha256sum -c nvim.appimage.sha256sum)" != "nvim.appimage: OK" ]];
 then
-    rm -rf nvim-linux*
+    rm -rf nvim.appimage*
     printf "\n\n    Checksum for neovim not matching - exiting!\n\n"
     exit 1
 fi
 
-sudo apt install ./nvim-linux64.deb
-rm -rf nvim-linux64.deb
+mv nvim.appimage ~/Applications
+rm -rf nvim.appimage

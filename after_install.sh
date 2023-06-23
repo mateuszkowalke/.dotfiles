@@ -2,6 +2,9 @@
 
 set -e
 
+# create a folder for applications installed as appimages
+mkdir ~/Applications
+
 # make sure curl is installed
 sudo apt-get -y install curl
 
