@@ -3,7 +3,7 @@
 set -e
 
 # create a folder for applications installed as appimages
-mkdir ~/Applications
+mkdir -p ~/Applications
 
 # make sure curl is installed
 sudo apt-get -y install curl
@@ -26,32 +26,31 @@ sudo apt-get -y install apt-transport-https build-essential zsh i3-wm i3status d
     maim xclip xsel feh compton jq wireshark nmap gnome-clocks solaar \
     fuse libfuse2
 
+# add user to wireshark group, so that it doesn't need to be run as root
+sudo usermod -aG wireshark $USER
+
 # install nvim
 ./nvim_install.sh
 
-# alacritty's dependencies
-sudo apt-get -y install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev
-
-# add user to wireshark group, so that it doesn't need to be run as root
-sudo usermod -aG wireshark $USER
+# install wezterm
+./wezterm_install.sh
 
 # git aliases
 sh ./git_aliases.sh
 
-# install patched font
-./font_install.sh
-
 # workspaces mod
 ./gnome_workspaces_mod.sh
 
-# clone asdf repo - rest of configurations provided by oh-my-zsh plugin
-git clone https://github.com/asdf-vm/asdf.git ~/.asdf
+# install rtx (asdf equivalent)
+sudo curl https://rtx.pub/rtx-latest-linux-x64 -o /usr/local/bin/rtx
+sudo chmod +x /usr/local/bin/rtx
+/usr/local/bin/rtx activate zsh
 
-# tmux plugin manager install
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-
-# tmuxifier install
-git clone https://github.com/jimeh/tmuxifier.git ~/.tmuxifier
+# add core rtx tools
+rtx use --global node@latest
+rtx use --global python@latest
+rtx use --global go@latest
+rtx use --global rust@latest
 
 # clone notes
 git clone git@github.com:mateuszkowalke/notes.git ~/Notes

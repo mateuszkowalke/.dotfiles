@@ -10,7 +10,4 @@ rm ~/.zshrc
 cd ~/.dotfiles
 stow nvim tmux zsh i3 i3status alacritty
 
-# install tmux plugins
-~/.tmux/plugins/tpm/bin/install_plugins
-
 printf "\n\n	You need to login again\n\n"

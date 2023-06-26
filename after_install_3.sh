@@ -2,24 +2,8 @@
 
 set -e
 
-# add core asdf plugins
-asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git
-asdf plugin add python https://github.com/asdf-community/asdf-python.git
-
-asdf install nodejs latest
-asdf global nodejs latest
-asdf install python latest
-asdf global python latest
-
-# install rust
-# this has to be done outside of asdf - can't install stuff if rust installed via asdf
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-
-# need to put .cargo/bin to the path for alacritty installation
-export PATH="$HOME/.cargo/bin:$PATH"
-
-# install alacritty - depends on rust already being on the system
-cargo install alacritty
+# install lazygit
+go install github.com/jesseduffield/lazygit@latest
 
 # install yarn - needed for some neovim plugins
 npm install --global yarn

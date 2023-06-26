@@ -77,7 +77,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git history-substring-search fzf ssh-agent asdf)
+plugins=(git history-substring-search fzf ssh-agent)
 
 # ssh-agent config
 zstyle :omz:plugins:ssh-agent agent-forwarding yes
@@ -98,10 +98,6 @@ bindkey -e
 
 # add appimage folder to path
 export PATH="$HOME/Applications:$PATH"
-
-# tmuxifier setup
-export PATH="$HOME/.tmuxifier/bin:$PATH"
-eval "$(tmuxifier init -)"
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -155,3 +151,7 @@ ng_path=$(which ng)
 if [ -x "$ng_path" ] ; then
     source <(ng completion script)
 fi
+
+# activate rtx
+eval "$(/usr/local/bin/rtx activate zsh)"
+
