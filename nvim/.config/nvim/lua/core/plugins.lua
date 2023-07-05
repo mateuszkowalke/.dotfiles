@@ -53,9 +53,6 @@ return require('packer').startup(function(use)
         }
     })
 
-    -- copilot
-    use "github/copilot.vim"
-
     -- Completion framework:
     use 'hrsh7th/nvim-cmp'
 
