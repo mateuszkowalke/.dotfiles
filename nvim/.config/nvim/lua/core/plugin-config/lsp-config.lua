@@ -2,7 +2,7 @@ require('mason').setup()
 -- TODO
 -- complete the ensure_installed list
 require('mason-lspconfig').setup({
-    ensure_installed = { "tsserver" }
+    ensure_installed = { "tsserver", "lua_ls" }
 })
 
 vim.keymap.set("n", "gd", "<cmd>Lspsaga lsp_finder<CR>", { silent = true })
@@ -44,7 +44,7 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 capabilities.offsetEncoding = 'utf-16'
 
 -- setup for languages using default configuration
-local servers = { 'gopls', 'clangd', 'docker_compose_language_service', 'html', 'cssls', 'angularls' }
+local servers = { 'gopls', 'clangd', 'docker_compose_language_service', 'html', 'cssls', 'lua_ls' }
 for _, server in ipairs(servers) do
     lsp_config[server].setup {
         on_attach = on_attach,
