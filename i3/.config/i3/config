@@ -9,7 +9,7 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
-set $mod Mod1
+set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -168,10 +168,14 @@ bar {
 # ------------------------------------------
 exec --no-startup-id nm-applet
 exec --no-startup-id compton
+exec --no-startup-id xautolock -time 15 -locker 'systemctl suspend' -notify 600 -notifier 'i3lock -i ~/Pictures/wallpapers/lock_screen.png | xset dpms force off' -corners 000- &
 exec feh --randomize --bg-fill ~/Pictures/wallpapers*
 
 bindsym $mod+Shift+s exec --no-startup-id ~/dotfiles/bin/monitor
 bindsym $mod+Shift+n exec --no-startup-id ~/dotfiles/bin/resolution
+
+# Manually locking screen
+bindsym $mod+Shift+o exec i3lock -i ~/Pictures/wallpapers/lock_screen.png
 
 # Notetaking
 # for_window [title="notetaker_window"] floating enable
@@ -191,8 +195,8 @@ bindsym XF86AudioMute exec --no-startup-id pactl -- set-sink-mute @DEFAULT_SINK@
 
 #
 # # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec brightnessctl s 3%+ # increase screen brightness
+bindsym XF86MonBrightnessDown exec brightnessctl s 3%- # decrease screen brightness
 
 # Alsa audio controls.
 bindsym $mod+Shift+comma exec ~/.config/i3/scripts/alsa restore

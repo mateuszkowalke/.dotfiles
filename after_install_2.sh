@@ -8,6 +8,6 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 # stow configs
 rm ~/.zshrc
 cd ~/.dotfiles
-stow nvim tmux zsh i3 i3status alacritty
+stow nvim tmux zsh i3 i3status wezterm
 
 printf "\n\n	You need to login again\n\n"
