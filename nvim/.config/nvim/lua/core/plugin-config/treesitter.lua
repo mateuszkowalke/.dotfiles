@@ -1,5 +1,6 @@
 require 'nvim-treesitter.configs'.setup {
-    ensure_installed = { 'javascript', 'typescript', 'json', 'css', 'html', 'go', 'rust', 'c' },
+    -- markdown and markdown_inline are required by lsp-saga
+    ensure_installed = { 'javascript', 'typescript', 'json', 'css', 'html', 'go', 'rust', 'c', 'markdown', 'markdown_inline' },
 
     -- Install parsers synchronously (only applied to `ensure_installed`)
     sync_install = false,
