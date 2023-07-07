@@ -52,8 +52,16 @@ rtx use --global python@latest
 rtx use --global go@latest
 rtx use --global rust@latest
 
-# clone notes
+# clone notes and scripts
 git clone git@github.com:mateuszkowalke/notes.git ~/Notes
+git clone git@github.com:mateuszkowalke/scripts.git ~/Scripts
+
+# install scripts
+mkdir -p ~/.local/bin
+~/Scripts/install.sh
+
+# register git aliases
+./git_aliases.sh
 
 # create a directory for projects
 mkdir -p ~/Projects

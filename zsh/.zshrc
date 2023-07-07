@@ -99,6 +99,9 @@ bindkey -e
 # add appimage folder to path
 export PATH="$HOME/Applications:$PATH"
 
+# add local scripts folder to path
+export PATH="$HOME/.local/bin:$PATH"
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # go configuration

@@ -14,7 +14,7 @@ Preferred method for proceeding is:
  - add keys to github,
  - remove and clone this repo again using ssh.
 
-* if not setting up ssh keys, either comment out cloning of 'Notes' repo or do it using https.
+* if not setting up ssh keys, either comment out cloning of 'Notes' and 'Scripts' repos or do it using https.
 
 Then run after_install scripts in order, provide required input when prompted and relogin after each step (on VMs it might be required to restart the machine between each step).
 Important: allow non-root users for wireshark to capture packets upon installation - if you forget to do this run `sudo dpkg-reconfigure wireshark-common` to reconfigure it after installation is complete.
