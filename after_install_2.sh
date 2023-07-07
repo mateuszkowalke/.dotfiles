@@ -10,4 +10,8 @@ rm ~/.zshrc
 cd ~/.dotfiles
 stow nvim tmux zsh i3 i3status wezterm
 
+# install aws tools
+# this requires node to be already installed
+./awstools_install.sh
+
 printf "\n\n	You need to login again\n\n"
