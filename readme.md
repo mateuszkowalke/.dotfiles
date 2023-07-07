@@ -23,9 +23,17 @@ Remember to set appropriate font in your terminal emulator, although for i3/alac
 
 For ubuntu you might want to install shell extensions and pop os shell (note: use jammy_master branch).
 
+### Wallpapers in i3
+
+Setting wallpapers in i3 is done by set_wallpaper.sh script from Scripts repo. It expects properly named wallpaper files in ~/Pictures/wallpapers folder. Have a look at the script for details. Example files are:
+ - wallpaper--2560x1440.jpg
+ - wallpaper--primary.jpg
+
 ### Alacritty
 
 Alacritty is build from source for now. It's set as default terminal emulator for i3.
+
+Alacritty has been deprecated - using wezterm instead.
 
 ### Tmux
 
