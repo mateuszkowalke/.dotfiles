@@ -2,7 +2,7 @@ require('mason').setup()
 -- TODO
 -- complete the ensure_installed list
 require('mason-lspconfig').setup({
-    ensure_installed = { "tsserver", "lua_ls" }
+    ensure_installed = { "tsserver", "lua_ls", "clangd" }
 })
 
 vim.keymap.set("n", "gd", "<cmd>Lspsaga lsp_finder<CR>", { silent = true })
