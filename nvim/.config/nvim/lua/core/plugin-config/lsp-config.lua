@@ -111,16 +111,6 @@ lsp_config.tsserver.setup {
     root_dir = lsp_config.util.root_pattern("package.json"),
 }
 
-lsp_config.angularls.setup {
-    on_attach = function(_, bufnr)
-        on_attach(_, bufnr)
-        vim.keymap.set('n', '<space>f', ':Format<CR>', { buffer = bufnr })
-        vim.keymap.set('n', '<space>F', ':FormatWrite<CR>', { buffer = bufnr })
-    end,
-    capabilities = capabilities,
-    root_dir = lsp_config.util.root_pattern("package.json"),
-}
-
 lsp_config.jsonls.setup {
     on_attach = function(_, bufnr)
         on_attach(_, bufnr)
