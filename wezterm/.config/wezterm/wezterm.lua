@@ -47,7 +47,7 @@ table.insert(mykeys, { key = 'l', mods = 'ALT|SHIFT', action = act.AdjustPaneSiz
 
 config.keys = mykeys
 
-config.font = wezterm.font('JetBrains Mono', { weight = 'Medium', italic = false, stretch = 'Normal' })
+config.font = wezterm.font('Hack Nerd Font Mono', { weight = 'Medium', italic = false, stretch = 'Normal' })
 
 config.harfbuzz_features = {
     'calt=1',
