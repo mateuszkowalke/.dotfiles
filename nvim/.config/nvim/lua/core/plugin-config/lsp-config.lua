@@ -1,14 +1,17 @@
 require('mason').setup()
 -- TODO
 -- complete the ensure_installed list
+-- need to exclude 'black' and 'prettier' from the list as causing errors:
+-- [mason-lspconfig.nvim] Server "black" is not a valid entry in ensure_installed. Make sure to only provide lspconfig server names.
 require('mason-lspconfig').setup({
-    ensure_installed = { "tsserver", "lua_ls", "clangd" }
+    ensure_installed = { 'tsserver', 'denols', 'eslint', 'html', 'cssls', 'jsonls', 'lua_ls', 'clangd',
+        'docker_compose_language_service', 'gopls', 'pyright', 'ruff_lsp' }
 })
 
-vim.keymap.set("n", "gd", "<cmd>Lspsaga lsp_finder<CR>", { silent = true })
+vim.keymap.set('n', 'gd', '<cmd>Lspsaga lsp_finder<CR>', { silent = true })
 vim.keymap.set('n', 'K', '<Cmd>Lspsaga hover_doc<cr>', { silent = true })
-vim.keymap.set({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>", { silent = true })
-vim.keymap.set("n", "<leader>rn", "<cmd>Lspsaga rename<CR>", { silent = true })
+vim.keymap.set({ 'n', 'v' }, '<leader>ca', '<cmd>Lspsaga code_action<CR>', { silent = true })
+vim.keymap.set('n', '<leader>rn', '<cmd>Lspsaga rename<CR>', { silent = true })
 
 -- close quickfix menu after selecting choice and center screen
 -- vim.api.nvim_create_autocmd(
@@ -44,7 +47,7 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 capabilities.offsetEncoding = 'utf-16'
 
 -- setup for languages using default configuration
-local servers = { 'gopls', 'clangd', 'docker_compose_language_service', 'html', 'cssls', 'lua_ls' }
+local servers = { 'gopls', 'clangd', 'docker_compose_language_service', 'html', 'cssls', 'ruff_lsp' }
 for _, server in ipairs(servers) do
     lsp_config[server].setup {
         on_attach = on_attach,
@@ -52,8 +55,13 @@ for _, server in ipairs(servers) do
     }
 end
 
+-- lua setup
 lsp_config.lua_ls.setup {
-    on_attach = on_attach,
+    on_attach = function(_, bufnr)
+        on_attach(_, bufnr)
+        vim.keymap.set('n', '<space>f', ':Format<CR>', { buffer = bufnr })
+        vim.keymap.set('n', '<space>F', ':FormatWrite<CR>', { buffer = bufnr })
+    end,
     capabilities = capabilities,
     settings = {
         Lua = {
@@ -68,6 +76,16 @@ lsp_config.lua_ls.setup {
             }
         }
     }
+}
+
+-- python setup
+lsp_config.pyright.setup {
+    on_attach = function(_, bufnr)
+        on_attach(_, bufnr)
+        vim.keymap.set('n', '<space>f', ':Format<CR>', { buffer = bufnr })
+        vim.keymap.set('n', '<space>F', ':FormatWrite<CR>', { buffer = bufnr })
+    end,
+    capabilities = capabilities,
 }
 
 -- rust setup
@@ -123,27 +141,30 @@ lsp_config.jsonls.setup {
 -- setup linters and formatters
 lsp_config['eslint'].setup({})
 
-require("formatter").setup(
+require('formatter').setup(
     {
         logging = true,
         filetype = {
             typescriptreact = {
-                require("formatter.filetypes.typescriptreact").prettier,
+                require('formatter.filetypes.typescriptreact').prettier,
             },
             typescript = {
-                require("formatter.filetypes.typescript").prettier,
+                require('formatter.filetypes.typescript').prettier,
             },
             javascriptreact = {
-                require("formatter.filetypes.javascriptreact").prettier,
+                require('formatter.filetypes.javascriptreact').prettier,
             },
             javascript = {
-                require("formatter.filetypes.javascript").prettier,
+                require('formatter.filetypes.javascript').prettier,
             },
             json = {
-                require("formatter.filetypes.json").prettier,
+                require('formatter.filetypes.json').prettier,
             },
             lua = {
-                require("formatter.filetypes.lua").stylua,
+                require('formatter.filetypes.lua').stylua,
+            },
+            python = {
+                require('formatter.filetypes.python').black
             }
         }
     }
