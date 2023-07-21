@@ -24,7 +24,7 @@ sudo apt-get -y install apt-transport-https i3-wm i3status i3lock \
     git make libssl-dev curl wget zsh rofi build-essential xautolock \
     stow fzf pip tmux lm-sensors brave-browser liferea pgadmin4 ripgrep \
     maim xclip xsel feh compton jq wireshark nmap gnome-clocks solaar \
-    fuse libfuse2 gimp
+    fuse libfuse2 gimp valgrind htop
 
 # add user to wireshark group, so that it doesn't need to be run as root
 sudo usermod -aG wireshark $USER
