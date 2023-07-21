@@ -169,7 +169,7 @@ bar {
 exec --no-startup-id nm-applet
 exec --no-startup-id compton
 exec --no-startup-id xautolock -time 15 -locker 'systemctl suspend' -notify 600 -notifier 'i3lock -i ~/Pictures/wallpapers/lock_screen.png | xset dpms force off' -corners 000- &
-exec set_wallpaper
+exec --no-startup-id set_wallpaper
 
 bindsym $mod+Shift+s exec --no-startup-id ~/dotfiles/bin/monitor
 bindsym $mod+Shift+n exec --no-startup-id ~/dotfiles/bin/resolution
