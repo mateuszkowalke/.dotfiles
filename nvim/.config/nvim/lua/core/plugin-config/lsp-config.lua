@@ -15,14 +15,13 @@ require('mason-lspconfig').setup({
 --     command = [[nnoremap <buffer> <CR> <CR>:cclose<CR>zz]]
 -- })
 
-require('lspsaga').setup()
 local lsp_config = require('lspconfig')
 
 local on_attach = function(_, bufnr)
     local bufopts = { noremap = true, silent = true, buffer = bufnr }
     vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-    vim.keymap.set('n', 'gd', '<cmd>Lspsaga lsp_finder<CR>', { silent = true })
-    vim.keymap.set('n', 'K', '<Cmd>Lspsaga hover_doc<cr>', { silent = true })
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { silent = true })
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, { silent = true })
     vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
     vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
     vim.keymap.set('n', ']d', vim.diagnostic.goto_next, bufopts)
@@ -33,8 +32,8 @@ local on_attach = function(_, bufnr)
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end, bufopts)
     vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
-    vim.keymap.set('n', '<leader>rn', '<cmd>Lspsaga rename<CR>', { silent = true })
-    vim.keymap.set({ 'n', 'v' }, '<leader>ca', '<cmd>Lspsaga code_action<CR>', { silent = true })
+    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { silent = true })
+    vim.keymap.set({ 'n', 'v' }, '<leader>ca', vim.lsp.buf.code_action, { silent = true })
     vim.keymap.set('n', 'gr', require('telescope.builtin').lsp_references, bufopts)
     vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 end

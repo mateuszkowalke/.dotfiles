@@ -38,15 +38,6 @@ return require('packer').startup(function(use)
     use 'williamboman/mason.nvim'
     use 'williamboman/mason-lspconfig.nvim'
     use 'neovim/nvim-lspconfig'
-    use({
-        "glepnir/lspsaga.nvim",
-        branch = "main",
-        requires = {
-            { "nvim-tree/nvim-web-devicons" },
-            -- needs markdown and markdown_inline parser installed
-            { "nvim-treesitter/nvim-treesitter" }
-        }
-    })
 
     -- Completion framework:
     use 'hrsh7th/nvim-cmp'
