@@ -40,15 +40,10 @@ return require('packer').startup(function(use)
     use 'neovim/nvim-lspconfig'
     use({
         "glepnir/lspsaga.nvim",
-        opt = true,
         branch = "main",
-        event = "LspAttach",
-        config = function()
-            require("lspsaga").setup()
-        end,
         requires = {
             { "nvim-tree/nvim-web-devicons" },
-            --Please make sure you install markdown and markdown_inline parser
+            -- needs markdown and markdown_inline parser installed
             { "nvim-treesitter/nvim-treesitter" }
         }
     })
@@ -100,7 +95,7 @@ return require('packer').startup(function(use)
         run = "cd app && npm install",
         setup = function()
             vim.g.mkdp_filetypes = { "markdown" }
-            vim.g.mkdp_browser = "/usr/bin/firefox"
+            vim.g.mkdp_browser = "/snap/bin/firefox"
         end,
         ft = { "markdown" },
     })
