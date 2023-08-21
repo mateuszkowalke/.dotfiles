@@ -18,8 +18,8 @@ rm Leapp_0.18.1_amd64.deb
 
 npm install -g @noovolari/leapp-cli
 
-curl "https://github.com/aws/aws-sam-cli/releases/latest/download/aws-sam-cli-linux-x86_64.zip" -o "sam-cli.zip"
+curl -L "https://github.com/aws/aws-sam-cli/releases/latest/download/aws-sam-cli-linux-x86_64.zip" -o "sam-cli.zip"
 unzip sam-cli.zip -d sam-installation
 sudo ./sam-installation/install
-rm -rf aws
+rm -rf sam-installation
 rm sam-cli.zip
