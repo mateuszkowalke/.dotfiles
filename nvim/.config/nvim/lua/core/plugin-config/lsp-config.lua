@@ -5,7 +5,7 @@ require('mason').setup()
 -- [mason-lspconfig.nvim] Server "black" is not a valid entry in ensure_installed. Make sure to only provide lspconfig server names.
 require('mason-lspconfig').setup({
     ensure_installed = { 'tsserver', 'denols', 'eslint', 'html', 'cssls', 'jsonls', 'lua_ls', 'clangd',
-        'docker_compose_language_service', 'gopls', 'pyright', 'ruff_lsp' }
+        'docker_compose_language_service', 'gopls', 'rust_analyzer', 'pyright', 'ruff_lsp' }
 })
 
 -- close quickfix menu after selecting choice and center screen
