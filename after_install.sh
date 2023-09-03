@@ -52,6 +52,11 @@ rtx use --global python@latest
 rtx use --global go@latest
 rtx use --global rust@latest
 
+# add platformio
+wget -O get-platformio.py https://raw.githubusercontent.com/platformio/platformio-core-installer/master/get-platformio.py
+python3 get-platformio.py
+rm get-platformio.py
+
 # clone notes and scripts
 git clone git@github.com:mateuszkowalke/notes.git ~/Notes
 git clone git@github.com:mateuszkowalke/scripts.git ~/Scripts

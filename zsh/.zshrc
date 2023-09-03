@@ -122,6 +122,9 @@ export PICO_SDK_PATH="$HOME/pico/pico-sdk"
 # esp-idf configuration
 alias get_idf='. $HOME/esp/esp-idf/export.sh'
 
+# platformio configuration
+export PATH=$PATH:$HOME/.platformio/penv/bin
+
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
