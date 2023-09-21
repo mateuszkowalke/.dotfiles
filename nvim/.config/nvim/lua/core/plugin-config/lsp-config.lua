@@ -76,8 +76,8 @@ lsp_config.gopls.setup({
 		vim.keymap.set("n", "<space>ge", ":GoIfErr<CR>", { buffer = bufnr })
 		vim.keymap.set("n", "<space>gt", ":GoAddTags<CR>", { buffer = bufnr })
 		vim.keymap.set("v", "<space>gt", ":GoAddTags<CR>", { buffer = bufnr })
-		vim.keymap.set("n", "<space>gc", ":GoClearTags<CR>", { buffer = bufnr })
-		vim.keymap.set("v", "<space>gc", ":GoClearTags<CR>", { buffer = bufnr })
+		vim.keymap.set("n", "<space>gr", ":GoClearTags<CR>", { buffer = bufnr })
+		vim.keymap.set("v", "<space>gr", ":GoClearTags<CR>", { buffer = bufnr })
 	end,
 	capabilities = capabilities,
 	filetypes = { "go", "gomod", "gowork", "gotmpl" },
