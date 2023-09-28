@@ -16,6 +16,9 @@ echo "deb [signed-by=/usr/share/keyrings/brave-browser-archive-keyring.gpg arch=
 sudo curl https://www.pgadmin.org/static/packages_pgadmin_org.pub | sudo apt-key add
 sudo sh -c 'echo "deb https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_release -cs) pgadmin4 main" > /etc/apt/sources.list.d/pgadmin4.list'
 
+# add obs studio repo
+sudo add-apt-repository ppa:obsproject/obs-studio
+
 # update and install necessary packages
 # ripgrep is needed for nvim telescope to work properly and used as nvim's grepprg
 # fuse and libfuse2 are needed to support AppImages
@@ -24,7 +27,7 @@ sudo apt-get -y install apt-transport-https i3-wm i3status i3lock \
     git make libssl-dev curl wget zsh rofi build-essential xautolock \
     stow fzf pip tmux lm-sensors brave-browser liferea pgadmin4 ripgrep \
     maim xclip xsel feh compton jq wireshark nmap gnome-clocks solaar \
-    fuse libfuse2 gimp valgrind htop brightnessctl
+    fuse libfuse2 gimp valgrind htop brightnessctl obs-studio
 
 # add user to wireshark group, so that it doesn't need to be run as root
 sudo usermod -aG wireshark $USER
