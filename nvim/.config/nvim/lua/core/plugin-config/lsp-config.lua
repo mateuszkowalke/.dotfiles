@@ -68,7 +68,6 @@ for _, server in ipairs(servers) do
 end
 
 -- sql setup
-
 lsp_config.sqlls.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
@@ -156,8 +155,8 @@ rt.setup({
 			-- Code action groups
 			vim.keymap.set("n", "<Leader>a", rt.code_action_group.code_action_group, { buffer = bufnr })
 		end,
+		capabilities = capabilities,
 	},
-	capabilities = capabilities,
 })
 
 -- typescript/javascript setup
