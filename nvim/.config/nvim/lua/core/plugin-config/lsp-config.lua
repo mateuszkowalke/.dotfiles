@@ -1,4 +1,5 @@
 require("mason").setup()
+
 -- TODO
 -- complete the ensure_installed list
 -- need to exclude 'black' and 'prettier' from the list as causing errors:
@@ -56,7 +57,10 @@ local on_attach = function(_, bufnr)
 end
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
-capabilities.offsetEncoding = "utf-16"
+-- TODO
+-- remove after figuring out what breaks if this isn't set
+-- setting this brakes rust-analyzer when running rust-tools
+-- capabilities.offsetEncoding = "utf-16"
 
 -- setup for languages using default configuration
 local servers = { "clangd", "docker_compose_language_service", "html", "cssls", "ruff_lsp", "asm_lsp" }
