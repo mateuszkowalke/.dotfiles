@@ -136,7 +136,7 @@ dap.configurations.typescript = {
 			"--runTestsByPath",
 			"${relativeFile}",
 			"--config",
-			"jest.config.js",
+			"jest.config.ts",
 		},
 		disableOptimisticBPs = true,
 		sourceMaps = true,
