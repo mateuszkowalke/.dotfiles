@@ -77,6 +77,10 @@ mkdir -p ~/Projects
 # install docker
 sh ./docker_install.sh
 
+# install starship (prompt)
+# this may fail on next fresh install
+curl -sS https://starship.rs/install.sh | sh
+
 # install ohmyzsh
 sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
