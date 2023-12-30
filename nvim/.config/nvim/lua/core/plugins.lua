@@ -100,7 +100,13 @@ return require("packer").startup(function(use)
 	})
 
 	-- notetaking
-	use("vimwiki/vimwiki")
+	use({
+		"epwalsh/obsidian.nvim",
+		tag = "*", -- recommended, use latest release instead of latest commit
+		requires = {
+			"nvim-lua/plenary.nvim",
+		},
+	})
 	use({
 		"iamcco/markdown-preview.nvim",
 		run = "cd app && npm install",

@@ -38,6 +38,9 @@ sudo usermod -aG wireshark $USER
 # install wezterm
 ./wezterm_install.sh
 
+# install obsidian
+./obsidian_install.sh
+
 # git aliases
 sh ./git_aliases.sh
 

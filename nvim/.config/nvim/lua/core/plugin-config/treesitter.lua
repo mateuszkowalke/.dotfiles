@@ -1,5 +1,5 @@
 require("nvim-treesitter.configs").setup({
-	-- markdown and markdown_inline are required by lsp-saga
+	-- markdown and markdown_inline are required by lsp-saga and obsidian.nvim
 	ensure_installed = {
 		"javascript",
 		"typescript",
@@ -20,7 +20,7 @@ require("nvim-treesitter.configs").setup({
 
 	-- Automatically install missing parsers when entering buffer
 	-- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
-	auto_install = false,
+	auto_install = true,
 
 	highlight = {
 		enable = true,
