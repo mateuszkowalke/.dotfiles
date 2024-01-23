@@ -11,7 +11,6 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
-vim.opt.conceallevel = 1
 vim.opt.smartindent = false
 vim.opt.backup = false
 vim.opt.undodir = os.getenv('HOME') .. '/.vim/undodir'

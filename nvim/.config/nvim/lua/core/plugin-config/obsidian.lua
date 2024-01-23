@@ -6,7 +6,7 @@ require("obsidian").setup({
 	workspaces = {
 		{
 			name = "general",
-			path = "~/Notes",
+			path = "~/notes",
 		},
 	},
 
@@ -19,7 +19,7 @@ require("obsidian").setup({
 	detect_cwd = false,
 
 	-- Optional, if you keep notes in a specific subdirectory of your vault.
-	-- notes_subdir = "notes",
+	notes_subdir = "zettelkasten",
 
 	-- Optional, set the log level for obsidian.nvim. This is an integer corresponding to one of the log
 	-- levels defined by "vim.log.levels.*".
@@ -27,13 +27,13 @@ require("obsidian").setup({
 
 	daily_notes = {
 		-- Optional, if you keep daily notes in a separate directory.
-		folder = "daily-notes",
+		-- folder = "daily-notes",
 		-- Optional, if you want to change the date format for the ID of daily notes.
 		date_format = "%Y-%m-%d",
 		-- Optional, if you want to change the date format of the default alias of daily notes.
 		alias_format = "%B %-d, %Y",
 		-- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
-		template = nil,
+		template = "daily.md",
 	},
 
 	-- Optional, completion of wiki links, local markdown links, and tags using nvim-cmp.
@@ -86,20 +86,7 @@ require("obsidian").setup({
 
 	-- Optional, customize how names/IDs for new notes are created.
 	note_id_func = function(title)
-		-- Create note IDs in a Zettelkasten format with a timestamp and a suffix.
-		-- In this case a note with the title 'My new note' will be given an ID that looks
-		-- like '1657296016-my-new-note', and therefore the file name '1657296016-my-new-note.md'
-		local suffix = ""
-		if title ~= nil then
-			-- If title is given, transform it into valid file name.
-			suffix = title:gsub(" ", "-"):gsub("[^A-Za-z0-9-]", ""):lower()
-		else
-			-- If title is nil, just add 4 random uppercase letters to the suffix.
-			for _ = 1, 4 do
-				suffix = suffix .. string.char(math.random(65, 90))
-			end
-		end
-		return tostring(os.time()) .. "-" .. suffix
+		return title
 	end,
 
 	-- Optional, boolean or a function that takes a filename and returns a boolean.
@@ -142,7 +129,7 @@ require("obsidian").setup({
 	follow_url_func = function(url)
 		-- Open the URL in the default web browser.
 		-- vim.fn.jobstart({ "open", url }) -- Mac OS
-		vim.fn.jobstart({"xdg-open", url})  -- linux
+		vim.fn.jobstart({ "xdg-open", url }) -- linux
 	end,
 
 	-- Optional, set to true if you use the Obsidian Advanced URI plugin.
@@ -211,7 +198,7 @@ require("obsidian").setup({
 		-- The default folder to place images in via `:ObsidianPasteImg`.
 		-- If this is a relative path it will be interpreted as relative to the vault root.
 		-- You can always override this per image by passing a full path to the command instead of just a filename.
-		img_folder = "assets/imgs", -- This is the default
+		img_folder = "files", -- This is the default
 		-- A function that determines the text to insert in the note when pasting an image.
 		-- It takes two arguments, the `obsidian.Client` and a plenary `Path` to the image file.
 		-- This is the default implementation.
