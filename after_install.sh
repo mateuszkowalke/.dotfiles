@@ -41,6 +41,9 @@ sudo usermod -aG wireshark $USER
 # install obsidian
 ./obsidian_install.sh
 
+# install tailscale
+curl -fsSL https://tailscale.com/install.sh | sh
+
 # git aliases
 sh ./git_aliases.sh
 
