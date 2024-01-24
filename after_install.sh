@@ -67,8 +67,8 @@ python3 get-platformio.py
 rm get-platformio.py
 
 # clone notes and scripts
-git clone git@github.com:mateuszkowalke/notes.git ~/Notes
-git clone git@github.com:mateuszkowalke/scripts.git ~/Scripts
+git clone git@github.com:mateuszkowalke/notes.git
+git clone git@github.com:mateuszkowalke/scripts.git
 
 # install scripts
 mkdir -p ~/.local/bin
@@ -78,7 +78,7 @@ mkdir -p ~/.local/bin
 ./git_aliases.sh
 
 # create a directory for projects
-mkdir -p ~/Projects
+mkdir -p ~/projects
 
 # install docker
 sh ./docker_install.sh
