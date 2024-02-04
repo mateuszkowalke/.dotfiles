@@ -6,7 +6,7 @@ require("obsidian").setup({
 	workspaces = {
 		{
 			name = "general",
-			path = "~/notes",
+			path = "~/Nextcloud/notes",
 		},
 	},
 
