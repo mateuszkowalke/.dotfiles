@@ -147,8 +147,8 @@ fi
 alias ll='ls -alF'
 alias lg='lazygit'
 
-# activate rtx
-eval "$(/usr/local/bin/rtx activate zsh)"
+# activate mise
+eval "$(/home/mk/.local/bin/mise activate zsh)"
 
 # Starship prompt initialization
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
@@ -159,4 +159,3 @@ ng_path=$(which ng)
 if [ -x "$ng_path" ] ; then
     source <(ng completion script)
 fi
-

@@ -54,10 +54,8 @@ sh ./git_aliases.sh
 # workspaces mod
 ./gnome_workspaces_mod.sh
 
-# install rtx (asdf equivalent)
-sudo curl https://rtx.pub/rtx-latest-linux-x64 -o /usr/local/bin/rtx
-sudo chmod +x /usr/local/bin/rtx
-/usr/local/bin/rtx activate zsh
+# install mise (asdf equivalent)
+curl https://mise.run | sh
 
 # add core rtx tools
 rtx use --global node@latest
