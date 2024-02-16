@@ -57,11 +57,8 @@ sh ./git_aliases.sh
 # install mise (asdf equivalent)
 curl https://mise.run | sh
 
-# add core rtx tools
-rtx use --global node@latest
-rtx use --global python@latest
-rtx use --global go@latest
-rtx use --global rust@latest
+# install rust
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 # add platformio
 wget -O get-platformio.py https://raw.githubusercontent.com/platformio/platformio-core-installer/master/get-platformio.py
