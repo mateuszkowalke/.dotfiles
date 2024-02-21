@@ -3,6 +3,8 @@ local cmp = require('cmp')
 
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 
+local ls = require('luasnip')
+
 local has_words_before = function()
     unpack = unpack or table.unpack
     local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -29,10 +31,9 @@ cmp.setup({
     sources = {
         { name = 'path' }, -- file paths
         { name = 'nvim_lsp' }, -- from language server
+        { name = 'luasnip' }, -- from luasnip snippets
         { name = 'nvim_lua', keyword_length = 2 }, -- complete neovim's Lua runtime API such vim.lsp.*
         { name = 'buffer', keyword_length = 2 }, -- source current buffer
-        { name = 'vsnip', keyword_pattern = '\\%([^[:alnum:][:blank:]]\\|\\w\\+\\)',
-            keyword_length = 2 }, -- nvim-cmp source for vim-vsnip
         { name = 'calc' }, -- source for math calculation
         { name = 'nvim_lsp_signature_help' }, -- display function signatures with current parameter emphasized
     },
