@@ -10,13 +10,14 @@ require("obsidian").setup({
 		},
 	},
 
+	-- Where to put new notes created from completion. Valid options are
+	--  * "current_dir" - put new notes in same directory as the current buffer.
+	--  * "notes_subdir" - put new notes in the default notes subdirectory.
+	new_notes_location = "current_dir",
+
 	-- Alternatively - and for backwards compatibility - you can set 'dir' to a single path instead of
 	-- 'workspaces'. For example:
 	-- dir = "~/vaults/work",
-
-	-- Optional, set to true to use the current directory as a vault; otherwise
-	-- the first workspace is opened by default.
-	detect_cwd = false,
 
 	-- Optional, if you keep notes in a specific subdirectory of your vault.
 	notes_subdir = "zettelkasten",
@@ -33,7 +34,7 @@ require("obsidian").setup({
 		-- Optional, if you want to change the date format of the default alias of daily notes.
 		alias_format = "%B %-d, %Y",
 		-- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
-		template = 'daily.md',
+		template = "daily.md",
 	},
 
 	-- Optional, completion of wiki links, local markdown links, and tags using nvim-cmp.
@@ -43,27 +44,17 @@ require("obsidian").setup({
 
 		-- Trigger completion at 2 chars.
 		min_chars = 2,
-
-		-- Where to put new notes created from completion. Valid options are
-		--  * "current_dir" - put new notes in same directory as the current buffer.
-		--  * "notes_subdir" - put new notes in the default notes subdirectory.
-		new_notes_location = "current_dir",
-
-		-- Control how wiki links are completed with these (mutually exclusive) options:
-		--
-		-- 1. Whether to add the note ID during completion.
-		-- E.g. "[[Foo" completes to "[[foo|Foo]]" assuming "foo" is the ID of the note.
-		-- Mutually exclusive with 'prepend_note_path' and 'use_path_only'.
-		prepend_note_id = true,
-		-- 2. Whether to add the note path during completion.
-		-- E.g. "[[Foo" completes to "[[notes/foo|Foo]]" assuming "notes/foo.md" is the path of the note.
-		-- Mutually exclusive with 'prepend_note_id' and 'use_path_only'.
-		prepend_note_path = false,
-		-- 3. Whether to only use paths during completion.
-		-- E.g. "[[Foo" completes to "[[notes/foo]]" assuming "notes/foo.md" is the path of the note.
-		-- Mutually exclusive with 'prepend_note_id' and 'prepend_note_path'.
-		use_path_only = false,
 	},
+
+	wiki_link_func = function(opts)
+		if opts.id == nil then
+			return string.format("[[%s]]", opts.label)
+		elseif opts.label ~= opts.id then
+			return string.format("[[%s|%s]]", opts.id, opts.label)
+		else
+			return string.format("[[%s]]", opts.id)
+		end
+	end,
 
 	-- Optional, configure key mappings. These are the defaults. If you don't want to set any keymappings this
 	-- way then set 'mappings = {}'.
@@ -129,20 +120,12 @@ require("obsidian").setup({
 		substitutions = {},
 	},
 
-	-- Optional, customize the backlinks interface.
-	backlinks = {
-		-- The default height of the backlinks pane.
-		height = 10,
-		-- Whether or not to wrap lines.
-		wrap = true,
-	},
-
 	-- Optional, by default when you use `:ObsidianFollowLink` on a link to an external
 	-- URL it will be ignored but you can customize this behavior here.
 	follow_url_func = function(url)
 		-- Open the URL in the default web browser.
 		-- vim.fn.jobstart({ "open", url }) -- Mac OS
-		vim.fn.jobstart({"xdg-open", url})  -- linux
+		vim.fn.jobstart({ "xdg-open", url }) -- linux
 	end,
 
 	-- Optional, set to true if you use the Obsidian Advanced URI plugin.
