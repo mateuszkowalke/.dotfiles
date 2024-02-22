@@ -41,7 +41,7 @@ return require("packer").startup(function(use)
 	use("williamboman/mason-lspconfig.nvim")
 	use("neovim/nvim-lspconfig")
 
-	-- Completion framework:
+	-- completion framework:
 	use("hrsh7th/nvim-cmp")
 
 	-- completion sources:
@@ -69,7 +69,7 @@ return require("packer").startup(function(use)
 			require("nvim-autopairs").setup({})
 		end,
 	})
-	use("terrortylor/nvim-comment")
+	use("numToStr/Comment.nvim")
 
 	-- rust plugins
 	use("simrat39/rust-tools.nvim")
@@ -77,11 +77,13 @@ return require("packer").startup(function(use)
 	-- go plugins
 	use({
 		"crispgm/nvim-go",
-		config = function()
-			require("go").setup({})
-		end,
 		run = ":GoInstallBinaries",
 	})
+
+    -- sql plugins
+    use("tpope/vim-dadbod")
+    use("kristijanhusak/vim-dadbod-completion")
+    use("kristijanhusak/vim-dadbod-ui")
 
 	-- misc
 	use("theprimeagen/harpoon")
