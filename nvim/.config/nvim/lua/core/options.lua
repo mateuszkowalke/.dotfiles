@@ -36,5 +36,5 @@ vim.opt.secure = true
 
 vim.opt.completeopt='menu,preview,menuone,noselect'
 
-vim.opt.grepprg = 'rg --vimgrep --no-heading --smart-case --hidden'
+vim.opt.grepprg = 'rg --vimgrep --smart-case --hidden'
 vim.opt.grepformat = '%f:%l:%c:%m'
