@@ -91,6 +91,7 @@ return require("packer").startup(function(use)
 
 	-- git
 	use("tpope/vim-fugitive")
+	use("sindrets/diffview.nvim")
 
 	-- debugging
 	use({ "rcarriga/nvim-dap-ui", tag = "v3.4.0", requires = { "mfussenegger/nvim-dap" } })
