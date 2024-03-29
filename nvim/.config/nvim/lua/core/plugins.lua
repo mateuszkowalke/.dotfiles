@@ -28,6 +28,7 @@ return require("packer").startup(function(use)
 	})
 	use("nvim-treesitter/playground")
 	use("nvim-treesitter/nvim-treesitter-textobjects")
+	use("nvim-treesitter/nvim-treesitter-context")
 
 	-- telescope
 	use({
@@ -46,7 +47,7 @@ return require("packer").startup(function(use)
 
 	-- completion sources:
 	use("hrsh7th/cmp-nvim-lsp")
-    use("hrsh7th/cmp-nvim-lsp-signature-help")
+	use("hrsh7th/cmp-nvim-lsp-signature-help")
 	use("hrsh7th/cmp-nvim-lua")
 	use("hrsh7th/cmp-path")
 	use("hrsh7th/cmp-buffer")
@@ -80,10 +81,10 @@ return require("packer").startup(function(use)
 		run = ":GoInstallBinaries",
 	})
 
-    -- sql plugins
-    use("tpope/vim-dadbod")
-    use("kristijanhusak/vim-dadbod-completion")
-    use("kristijanhusak/vim-dadbod-ui")
+	-- sql plugins
+	use("tpope/vim-dadbod")
+	use("kristijanhusak/vim-dadbod-completion")
+	use("kristijanhusak/vim-dadbod-ui")
 
 	-- misc
 	use("theprimeagen/harpoon")
