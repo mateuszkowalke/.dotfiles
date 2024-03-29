@@ -78,7 +78,10 @@ mkdir -p ~/.local/bin
 ./git_aliases.sh
 
 # create a directory for projects
-mkdir -p ~/projects
+mkdir ~/projects
+
+# create a directory for nextcloud
+mkdir ~/Nextcloud
 
 # install docker
 sh ./docker_install.sh
