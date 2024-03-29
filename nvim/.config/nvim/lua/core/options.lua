@@ -30,6 +30,7 @@ vim.opt.isfname:append('@-@')
 vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = '80'
+vim.opt.cursorline = true
 
 vim.opt.exrc = true
 vim.opt.secure = true
