@@ -31,7 +31,7 @@ sudo apt-get -y install apt-transport-https i3-wm i3status i3lock \
     stow fzf pip tmux lm-sensors brave-browser liferea pgadmin4 ripgrep \
     maim xclip xsel feh compton jq wireshark nmap gnome-clocks solaar \
     fuse libfuse2 gimp valgrind gdbserver htop brightnessctl obs-studio \
-    nextcloud-desktop
+    nextcloud-desktop moreutils
 
 # add user to wireshark group, so that it doesn't need to be run as root
 sudo usermod -aG wireshark $USER
