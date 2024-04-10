@@ -16,7 +16,6 @@ require("mason-lspconfig").setup({
 		"clangd",
 		"docker_compose_language_service",
 		"gopls",
-		"sqlls",
 		"asm_lsp",
 		"rust_analyzer",
 		"pyright",
@@ -64,20 +63,14 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 -- capabilities.offsetEncoding = "utf-16"
 
 -- setup for languages using default configuration
-local servers = { "clangd", "docker_compose_language_service", "html", "cssls", "ruff_lsp", "asm_lsp", "yamlls" }
+local servers =
+	{ "clangd", "docker_compose_language_service", "html", "cssls", "ruff_lsp", "asm_lsp", "yamlls" }
 for _, server in ipairs(servers) do
 	lsp_config[server].setup({
 		on_attach = on_attach,
 		capabilities = capabilities,
 	})
 end
-
--- sql setup
-lsp_config.sqlls.setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-	root_dir = util.root_pattern(".git"),
-})
 
 -- go setup
 require("go").setup({
