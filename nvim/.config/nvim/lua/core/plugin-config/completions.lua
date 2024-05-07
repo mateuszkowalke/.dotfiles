@@ -37,6 +37,7 @@ cmp.setup({
 		{ name = "luasnip" }, -- from luasnip snippets
 		{ name = "buffer", keyword_length = 4 }, -- source current buffer
 		{ name = "nvim_lsp_signature_help" }, -- display function signatures with current parameter emphasized
+		{ name = "cmp-dbee" },
 	},
 	window = {
 		completion = cmp.config.window.bordered(),
@@ -51,7 +52,6 @@ cmp.setup({
 				path = "[path]",
 				luasnip = "[snip]",
 				buffer = "[buf]",
-				["vim-dadbod-completion"] = "[DB]",
 			}
 			item.menu = menu_icon[entry.source.name]
 			return item
@@ -59,13 +59,6 @@ cmp.setup({
 	},
 	preselect = cmp.PreselectMode.None,
 })
-
--- add vim-dadbod-completion in sql files
--- TODO
--- completion does not work
-vim.cmd([[
-    autocmd FileType sql,mysql,plsql,ddl lua require('cmp').setup.buffer { sources = { { name = 'vim-dadbod-completion' } } }
-]])
 
 -- adds '(' after selecting function of method in autocompletion
 cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())

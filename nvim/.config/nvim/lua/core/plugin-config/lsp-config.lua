@@ -2,8 +2,7 @@ require("mason").setup()
 
 -- TODO
 -- complete the ensure_installed list
--- need to exclude 'black' and 'prettier' from the list as causing errors:
--- [mason-lspconfig.nvim] Server "black" is not a valid entry in ensure_installed. Make sure to only provide lspconfig server names.
+-- need to install "sql-formatter" manually through mason as it's formatter
 require("mason-lspconfig").setup({
 	ensure_installed = {
 		"tsserver",
@@ -21,6 +20,8 @@ require("mason-lspconfig").setup({
 		"pyright",
 		"ruff_lsp",
 		"yamlls",
+		"bufls",
+		"sqls",
 	},
 })
 
@@ -64,7 +65,7 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 -- setup for languages using default configuration
 local servers =
-	{ "clangd", "docker_compose_language_service", "html", "cssls", "ruff_lsp", "asm_lsp", "yamlls" }
+	{ "clangd", "docker_compose_language_service", "html", "cssls", "ruff_lsp", "asm_lsp", "yamlls", "bufls", "sqls" }
 for _, server in ipairs(servers) do
 	lsp_config[server].setup({
 		on_attach = on_attach,

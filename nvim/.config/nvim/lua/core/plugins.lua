@@ -52,6 +52,10 @@ return require("packer").startup(function(use)
 	use("hrsh7th/cmp-path")
 	use("hrsh7th/cmp-buffer")
 	use("hrsh7th/cmp-cmdline")
+	use({
+		"MattiasMTS/cmp-dbee",
+		ft = "sql", -- optional but good to have
+	})
 
 	-- snippets
 	use({
@@ -82,9 +86,21 @@ return require("packer").startup(function(use)
 	})
 
 	-- sql plugins
-	use("tpope/vim-dadbod")
-	use("kristijanhusak/vim-dadbod-completion")
-	use("kristijanhusak/vim-dadbod-ui")
+	use({
+		"kndndrj/nvim-dbee",
+		requires = {
+			"MunifTanjim/nui.nvim",
+		},
+		run = function()
+			-- Install tries to automatically detect the install method.
+			-- if it fails, try calling it with one of these parameters:
+			--    "curl", "wget", "bitsadmin", "go"
+			require("dbee").install()
+		end,
+		config = function()
+			require("dbee").setup()
+		end,
+	})
 
 	-- misc
 	use("theprimeagen/harpoon")
