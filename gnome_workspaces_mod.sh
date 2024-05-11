@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# set default terminal emulator to alacritty
+gsettings set org.gnome.desktop.default-applications.terminal exec 'alacritty'
+
 # unbind from ubuntu dock
 gsettings set org.gnome.shell.extensions.dash-to-dock hot-keys false
 

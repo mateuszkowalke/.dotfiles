@@ -33,6 +33,12 @@ sudo apt-get -y install apt-transport-https i3-wm i3status i3lock \
     fuse libfuse2 gimp valgrind gdbserver htop brightnessctl obs-studio \
     nextcloud-desktop moreutils
 
+# alacritty dependencies
+sudo apt-get -y install cmake libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev
+
+# install tmux tpm
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
 # add user to wireshark group, so that it doesn't need to be run as root
 sudo usermod -aG wireshark $USER
 
