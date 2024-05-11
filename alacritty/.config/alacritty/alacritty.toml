@@ -1,0 +1,20 @@
+[shell]
+program = "/bin/zsh"
+args = ["-l"]
+
+[window]
+# decorations = "none"
+
+[font]
+normal = { family = "Hack Nerd Font Mono", style = "Regular" }
+bold = { family = "Hack Nerd Font Mono", style = "Regular" }
+italic = { family = "Hack Nerd Font Mono", style = "Regular" }
+bold_italic = { family = "Hack Nerd Font Mono", style = "Regular" }
+size = 14
+
+[colors]
+primary = { background = "#1A1D23" }
+
+[keyboard]
+bindings = [{ key = "F11", action = "ToggleFullscreen" }]
+
