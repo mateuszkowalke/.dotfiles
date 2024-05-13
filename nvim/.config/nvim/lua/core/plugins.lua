@@ -48,6 +48,7 @@ return require("packer").startup(function(use)
 	-- completion sources:
 	use("hrsh7th/cmp-nvim-lsp")
 	use("hrsh7th/cmp-nvim-lsp-signature-help")
+	use("saadparwaiz1/cmp_luasnip")
 	use("hrsh7th/cmp-nvim-lua")
 	use("hrsh7th/cmp-path")
 	use("hrsh7th/cmp-buffer")
