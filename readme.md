@@ -19,7 +19,7 @@ Preferred method for proceeding is:
 Then run after_install scripts in order, provide required input when prompted and relogin after each step (on VMs it might be required to restart the machine between each step).
 Important: allow non-root users for wireshark to capture packets upon installation - if you forget to do this run `sudo dpkg-reconfigure wireshark-common` to reconfigure it after installation is complete.
 
-Remember to set appropriate font in your terminal emulator, although for i3/alacritty combinations it's already configured.
+Remember to set appropriate font in your terminal emulator, although for i3/alacritty combination it's already configured.
 
 For ubuntu you might want to install shell extensions and pop os shell (note: use jammy_master branch).
 
@@ -32,8 +32,6 @@ Setting wallpapers in i3 is done by set_wallpaper.sh script from Scripts repo. I
 ### Alacritty
 
 Alacritty is build from source for now. It's set as default terminal emulator for i3.
-
-Alacritty has been deprecated - using wezterm instead.
 
 ### Tmux
 

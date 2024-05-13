@@ -45,9 +45,6 @@ sudo usermod -aG wireshark $USER
 # install nvim
 ./nvim_install.sh
 
-# install wezterm
-./wezterm_install.sh
-
 # install obsidian
 ./obsidian_install.sh
 

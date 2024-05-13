@@ -8,7 +8,7 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 # stow configs
 rm ~/.zshrc
 cd ~/.dotfiles
-stow nvim tmux zsh i3 i3status alacritty wezterm psql
+stow nvim tmux zsh i3 i3status alacritty psql
 
 # install aws tools
 # this requires node to be already installed
