@@ -65,7 +65,7 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 -- setup for languages using default configuration
 local servers =
-	{ "clangd", "docker_compose_language_service", "html", "cssls", "ruff_lsp", "asm_lsp", "yamlls", "bufls", "sqls" }
+	{ "clangd", "docker_compose_language_service", "html", "cssls", "ruff_lsp", "asm_lsp", "yamlls", "bufls" }
 for _, server in ipairs(servers) do
 	lsp_config[server].setup({
 		on_attach = on_attach,
@@ -99,6 +99,13 @@ lsp_config.gopls.setup({
 			},
 		},
 	},
+})
+
+-- sqls setup
+lsp_config.sqls.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+	cmd = { "/home/mk/.local/share/nvim/mason/bin/sqls", "-config", vim.fs.root(0, ".git") .. "/.sqlsrc.yml" },
 })
 
 -- lua setup

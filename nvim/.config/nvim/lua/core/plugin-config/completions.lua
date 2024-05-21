@@ -29,7 +29,6 @@ cmp.setup({
 		{ name = "luasnip" }, -- from luasnip snippets
 		{ name = "buffer", keyword_length = 4 }, -- source current buffer
 		{ name = "nvim_lsp_signature_help" }, -- display function signatures with current parameter emphasized
-		{ name = "cmp-dbee" },
 	},
 	window = {
 		completion = cmp.config.window.bordered(),
