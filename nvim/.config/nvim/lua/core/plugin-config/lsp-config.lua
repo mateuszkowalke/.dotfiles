@@ -102,10 +102,14 @@ lsp_config.gopls.setup({
 })
 
 -- sqls setup
+local sqls_root = vim.fs.root(0, ".git")
+if not sqls_root then
+	sqls_root = ""
+end
 lsp_config.sqls.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
-	cmd = { "/home/mk/.local/share/nvim/mason/bin/sqls", "-config", vim.fs.root(0, ".git") .. "/.sqlsrc.yml" },
+	cmd = { "/home/mk/.local/share/nvim/mason/bin/sqls", "-config", sqls_root .. "/.sqlsrc.yml" },
 })
 
 -- lua setup
