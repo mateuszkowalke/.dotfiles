@@ -23,9 +23,10 @@ vim.keymap.set("n", "<leader>dh", ":lua require'dap'.step_out()<CR>")
 vim.keymap.set("n", "<leader>dl", ":lua require'dap'.step_into()<CR>")
 vim.keymap.set("n", "<leader>dj", ":lua require'dap'.step_over()<CR>")
 vim.keymap.set("n", "<leader>db", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition: '))<CR>")
+vim.keymap.set("n", "<leader>de", ":lua require'dap'.eval(nil, { enter = true })<CR>")
+
 -- TODO
 -- dap mappings for equivalent vimspector features
--- nmap <leader>de :VimspectorEval
 -- nmap <leader>dw :VimspectorWatch
 -- nmap <leader>do :VimspectorShowOutput
 
@@ -33,9 +34,6 @@ vim.keymap.set("n", "<leader>db", ":lua require'dap'.set_breakpoint(vim.fn.input
 -- nmap <Leader>di <Plug>VimspectorBalloonEval
 -- " for visual mode, the visually selected text
 -- xmap <Leader>di <Plug>VimspectorBalloonEval
-
--- TODO
--- add remapping of K
 
 -- virtual text for debugging
 require("nvim-dap-virtual-text").setup()
