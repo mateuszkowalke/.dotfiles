@@ -54,7 +54,7 @@ return {
 
 		-- setup for languages using default configuration
 		local servers =
-			{ "clangd", "docker_compose_language_service", "html", "cssls", "ruff_lsp", "asm_lsp", "yamlls", "bufls" }
+			{ "clangd", "docker_compose_language_service", "html", "cssls", "ruff_lsp", "asm_lsp", "yamlls", "bufls", "htmx", "templ" }
 		for _, server in ipairs(servers) do
 			lsp_config[server].setup({
 				on_attach = on_attach,
