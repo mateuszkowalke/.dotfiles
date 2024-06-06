@@ -74,7 +74,7 @@ ZSH_THEME=""
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git history-substring-search fzf ssh-agent)
+plugins=(git history-substring-search fzf ssh-agent aws)
 
 # ssh-agent config
 zstyle :omz:plugins:ssh-agent agent-forwarding yes
@@ -159,3 +159,6 @@ ng_path=$(which ng)
 if [ -x "$ng_path" ] ; then
     source <(ng completion script)
 fi
+
+# add completions for go-blueprint
+source "${HOME}/go-blueprint-completion.sh"
