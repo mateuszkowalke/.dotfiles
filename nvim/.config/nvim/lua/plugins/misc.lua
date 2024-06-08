@@ -8,6 +8,5 @@ return {
 		end,
 		ft = { "markdown" },
 	},
-	"mbbill/undotree",
 	"christoomey/vim-tmux-navigator",
 }
