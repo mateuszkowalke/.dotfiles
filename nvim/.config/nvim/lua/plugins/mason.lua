@@ -31,8 +31,7 @@ return {
 					"ruff_lsp",
 					"yamlls",
 					"bufls",
-                    "htmx",
-                    "templ"
+					"graphql",
 				},
 			})
 		end,
