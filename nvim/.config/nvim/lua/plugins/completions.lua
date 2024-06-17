@@ -25,7 +25,7 @@ return {
 							local dbee = require("dbee")
 							dbee.setup({
 								sources = {
-									require("dbee.sources").FileSource:new(dbee_root .. "/.dbrc.json"),
+									require("dbee.sources").FileSource:new(vim.fs.joinpath(dbee_root,  ".dbrc.json")),
 								},
 							})
 							vim.keymap.set("n", "<leader>DB", dbee.toggle)
