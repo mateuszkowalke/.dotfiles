@@ -6,7 +6,8 @@ return {
 			"nvim-lua/plenary.nvim",
 		},
 		config = function()
-			require("obsidian").setup({
+			local obsidian = require("obsidian")
+			obsidian.setup({
 				-- A list of vault names and paths.
 				-- Each path should be the path to the vault root. If you use the Obsidian app,
 				-- the vault root is the parent directory of the `.obsidian` folder.
@@ -232,6 +233,15 @@ return {
 				-- case you can temporarily switch to the "yq" parser until the bug is fixed.
 				yaml_parser = "native",
 			})
+			vim.keymap.set("n", "<leader>oo", "<cmd>ObsidianOpen<CR>")
+			vim.keymap.set("n", "<leader>os", "<cmd>ObsidianSearch<CR>")
+			vim.keymap.set("n", "gf", function()
+				if obsidian.util.cursor_on_markdown_link() then
+					return "<cmd>ObsidianFollowLink<CR>"
+				else
+					return "gf"
+				end
+			end, { noremap = false, expr = true })
 		end,
 	},
 	{
