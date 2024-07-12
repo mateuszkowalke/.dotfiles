@@ -32,6 +32,7 @@ return {
 					"yamlls",
 					"bufls",
 					"graphql",
+					"sqls",
 				},
 			})
 		end,

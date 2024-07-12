@@ -235,6 +235,8 @@ return {
 			})
 			vim.keymap.set("n", "<leader>oo", "<cmd>ObsidianOpen<CR>")
 			vim.keymap.set("n", "<leader>os", "<cmd>ObsidianSearch<CR>")
+			vim.keymap.set("n", "<leader>on", "<cmd>ObsidianNew<CR>")
+			vim.keymap.set("n", "<leader>ot", "<cmd>ObsidianTags<CR>")
 			vim.keymap.set("n", "gf", function()
 				if obsidian.util.cursor_on_markdown_link() then
 					return "<cmd>ObsidianFollowLink<CR>"
