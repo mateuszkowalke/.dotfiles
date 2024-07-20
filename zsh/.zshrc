@@ -116,6 +116,18 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 # pico sdk configuration
 export PICO_SDK_PATH="$HOME/pico/pico-sdk"
 
+# android sdk configuration
+export ANDROID_HOME="$HOME/Android/Sdk"
+export PATH="$PATH:$ANDROID_HOME/emulator"
+export PATH="$PATH:$ANDROID_HOME/platform-tools"
+
+# android-studio configuration
+export PATH="$PATH:$HOME/android-studio/bin"
+
+# java configuration
+export JAVA_HOME=$(dirname $(dirname $(readlink -f $(which java))))
+export PATH=$PATH:$JAVA_HOME/bin
+
 # esp-idf configuration
 alias get_idf='. $HOME/esp/esp-idf/export.sh'
 

@@ -162,6 +162,26 @@ return {
 				console = "integratedTerminal",
 				port = 9229,
 			},
+			{
+				name = "Jest current file nestjs",
+				type = "node2",
+				request = "launch",
+				cwd = vim.fn.getcwd(),
+				runtimeArgs = {
+					"--inspect-brk",
+					"${workspaceFolder}/node_modules/.bin/jest",
+					"--no-coverage",
+					"--runTestsByPath",
+					"${relativeFile}",
+					"--config",
+					"test/jest-e2e.json",
+				},
+				disableOptimisticBPs = true,
+				protocol = "inspector",
+				skipFiles = { "<node_internals>/**/*.js" },
+				console = "integratedTerminal",
+				port = 9229,
+			},
 			-- For this to work install google-chrome-stable and run it with the --remote-debugging-port=9222 flag
 			{
 				name = "Launch Chrome",
