@@ -63,6 +63,16 @@ curl https://mise.run | sh
 # install rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
+# install kanata
+cargo install kanata
+
+# permissions setup for kanata
+sudo groupadd uinput
+sudo usermod -aG input $USER
+sudo usermod -aG uinput $USER
+echo 'KERNEL=="uinput", MODE="0660", GROUP="uinput", OPTIONS+="static_node=uinput"' | sudo tee /etc/udev/rules.d/99-input.rules
+sudo udevadm control --reload-rules && sudo udevadm trigger
+
 # add platformio
 wget -O get-platformio.py https://raw.githubusercontent.com/platformio/platformio-core-installer/master/get-platformio.py
 python3 get-platformio.py

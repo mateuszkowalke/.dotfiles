@@ -8,7 +8,10 @@ git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$
 # stow configs
 rm ~/.zshrc
 cd ~/.dotfiles
-stow nvim tmux zsh i3 i3status alacritty psql
+stow nvim tmux zsh i3 i3status alacritty psql kanata
+
+systemctl --user daemon-reload
+systemctl --user enable --now kanata.service
 
 # install aws tools
 # this requires node to be already installed
