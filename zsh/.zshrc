@@ -109,10 +109,6 @@ export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
 # rust configuration
 export PATH=$PATH:$HOME/.cargo/bin
 
-# deno configuration
-export DENO_INSTALL="$HOME/.deno"
-export PATH="$DENO_INSTALL/bin:$PATH"
-
 # pico sdk configuration
 export PICO_SDK_PATH="$HOME/pico/pico-sdk"
 
@@ -165,12 +161,3 @@ eval "$(/home/mk/.local/bin/mise activate zsh)"
 # Starship prompt initialization
 export STARSHIP_CONFIG=~/.config/starship/starship.toml
 eval "$(starship init zsh)"
-
-# Load Angular CLI autocompletion.
-ng_path=$(which ng)
-if [ -x "$ng_path" ] ; then
-    source <(ng completion script)
-fi
-
-# add completions for go-blueprint
-source "${HOME}/go-blueprint-completion.sh"
