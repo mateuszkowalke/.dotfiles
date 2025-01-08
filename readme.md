@@ -1,8 +1,8 @@
-# Config and after install scripts for pop os with neovim as main editor
+# Config and after install scripts for ubuntu with neovim as main editor
  
 ### Install
  
-After installing fresh pop os or ubuntu, first run:
+After installing fresh ubuntu system, first run:
  
 ```sh
 sudo apt update && sudo apt upgrade -y
@@ -16,12 +16,16 @@ Preferred method for proceeding is:
 
 * if not setting up ssh keys, either comment out cloning of 'Notes' and 'Scripts' repos or do it using https.
 
-Then run after_install scripts in order, provide required input when prompted and relogin after each step (on VMs it might be required to restart the machine between each step).
+Then run after_install scripts in order, from the `$HOME/.dotfiles` level, provide required input when prompted and relogin after each step (on VMs it might be required to restart the machine between each step).
 Important: allow non-root users for wireshark to capture packets upon installation - if you forget to do this run `sudo dpkg-reconfigure wireshark-common` to reconfigure it after installation is complete.
 
 Remember to set appropriate font in your terminal emulator, although for i3/alacritty combination it's already configured.
 
-For ubuntu you might want to install shell extensions and pop os shell (note: use jammy_master branch).
+For ubuntu you might want to install shell extensions and pop os shell (note: use master_noble branch) - this should be covered by `after_install_3.sh` though.
+
+Remember to setup nextcloud client.
+
+Remember to install tmux plugins (`prefix + I`).
 
 ### Wallpapers in i3
 
@@ -35,7 +39,7 @@ Alacritty is build from source for now. It's set as default terminal emulator fo
 
 ### Tmux
 
-This config uses prefix `Ctrl + a`, vim keybindings, 'vim-tmux-navigator' plugin and 'tmux-yank' plugin for copying into OS clipboard. 
+This config uses prefix `Ctrl + b`, vim keybindings, 'vim-tmux-navigator' plugin and 'tmux-yank' plugin for copying into OS clipboard. 
 
 To install tmux plugins run `prefix + I`.
 To live reload tmux config run `prefix + r`.
@@ -55,8 +59,9 @@ To rename sessions use `prefix + $`.
 
  - brave: used as default browser
  - liferea: rss and podcast viewer
- - gnome-clocks: for alarms
  - solaar: for logitech peripherals
+ - kanata: for `CapsLock` remap to `Esc` on short press and `Ctrl` on hold
+ - nextcloud: mainly to sync docs and notes
 
 ### AppImage apps don't work - "AppImages require FUSE to run" error
 

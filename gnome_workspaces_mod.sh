@@ -12,3 +12,12 @@ for i in {1..9}; do gsettings set org.gnome.shell.keybindings switch-to-applicat
 for i in {1..9}; do gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-$i "['<Super>$i']";done
 
 for i in {1..9}; do gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-$i "['<Super><Shift>$i']";done
+
+# install pop shell
+# this requires typescript to be globally available
+git clone https://github.com/pop-os/shell ~/pop-shell
+cd ~/pop-shell
+git co master_noble
+make local-install
+cd -
+rm -rf ~/pop-shell

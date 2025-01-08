@@ -25,13 +25,14 @@ sudo add-apt-repository ppa:obsproject/obs-studio
 # update and install necessary packages
 # ripgrep is needed for nvim telescope to work properly and used as nvim's grepprg
 # fuse and libfuse2 are needed to support AppImages
+# needed to install python3.12-venv as a depency for platformIO install - package missing on ubuntu24.04
 sudo apt-get update
 sudo apt-get -y install apt-transport-https i3-wm i3status i3lock \
     git make libssl-dev curl wget zsh rofi build-essential xautolock \
     stow fzf pip tmux lm-sensors brave-browser liferea pgadmin4 ripgrep \
     maim xclip xsel feh compton jq wireshark nmap gnome-clocks solaar \
     fuse libfuse2 gimp valgrind gdbserver btop brightnessctl obs-studio \
-    nextcloud-desktop moreutils
+    nextcloud-desktop moreutils python3.12-venv
 
 # alacritty dependencies
 sudo apt-get -y install cmake libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev
@@ -54,14 +55,15 @@ curl -fsSL https://tailscale.com/install.sh | sh
 # git aliases
 sh ./git_aliases.sh
 
-# workspaces mod
-./gnome_workspaces_mod.sh
-
 # install mise (asdf equivalent)
 curl https://mise.run | sh
 
+# install go
+mise use -g go@1.23
+
 # install rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+. "$HOME/.cargo/env"
 
 # install kanata
 cargo install kanata
@@ -78,10 +80,8 @@ wget -O get-platformio.py https://raw.githubusercontent.com/platformio/platformi
 python3 get-platformio.py
 rm get-platformio.py
 
-# clone notes and scripts
-# bear in mind the notes are moved to nextcloud synced folder too
-git clone git@github.com:mateuszkowalke/notes.git
-git clone git@github.com:mateuszkowalke/scripts.git
+# clone scripts
+git clone git@github.com:mateuszkowalke/scripts.git ~/Scripts
 
 # install scripts
 mkdir -p ~/.local/bin
