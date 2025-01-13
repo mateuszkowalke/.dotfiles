@@ -25,7 +25,15 @@ return {
 							local dbee = require("dbee")
 							dbee.setup({
 								sources = {
-									require("dbee.sources").FileSource:new(vim.fs.joinpath(dbee_root,  ".dbrc.json")),
+									-- this requires the project to be git repository
+									-- format for the file is
+									-- {
+									--   "id": "optional_identifier", -- only mandatory if you edit a file by hand. IT'S YOUR JOB TO KEEP THESE UNIQUE!
+									--   "name": "My Database",
+									--   "type": "sqlite", -- type of database driver
+									--   "url": "~/path/to/mydb.db"
+									-- }
+									require("dbee.sources").FileSource:new(vim.fs.joinpath(dbee_root, ".dbrc.json")),
 								},
 							})
 							vim.keymap.set("n", "<leader>DB", dbee.toggle)
