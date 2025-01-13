@@ -22,12 +22,12 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	group = format_sync_grp_go,
 })
 
--- run prettier on graphql save
+-- run prettier on save for appropriate files
 local format_sync_grp_prettier = vim.api.nvim_create_augroup("prettier", {})
-vim.api.nvim_create_autocmd("BufWritePre", {
+vim.api.nvim_create_autocmd("BufWritePost", {
 	pattern = { "*.json", "*.graphqls", "*.ts", "*.js" },
 	callback = function()
-		vim.cmd("Format")
+		vim.cmd("FormatWrite")
 	end,
 	group = format_sync_grp_prettier,
 })
