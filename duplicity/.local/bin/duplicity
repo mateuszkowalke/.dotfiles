@@ -1,0 +1,6 @@
+#!/bin/bash
+# Shim script run from deja-dup in place of duplicity 
+# which forces the exclusions read from ~/.config/deja-dup-excludes 
+# using the standard filelist exclusion mechanism
+
+/usr/bin/duplicity --include=$HOME/.cache/deja-dup/metadata --exclude-filelist=$HOME/.config/deja-dup-excludes "$@"
