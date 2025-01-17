@@ -90,6 +90,7 @@ return {
 					analyses = {
 						unusedparams = true,
 					},
+                    gofumpt = true,
 				},
 			},
 		})
